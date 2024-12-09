@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop",
+    "price": 999.99,
+    "category": "Electronics"
+  },
+  {
+    "id": 2,
+    "name": "Smartphone",
+    "price": 699.99,
+    "category": "Electronics"
+  },
+  {
+    "id": 3,
+    "name": "Headphones",
+    "price": 199.99,
+    "category": "Electronics"
+  },
+  {
+    "id": 4,
+    "name": "Coffee Maker",
+    "price": 49.99,
+    "category": "Home Appliances"
+  },
+  {
+    "id": 5,
+    "name": "Blender",
+    "price": 29.99,
+    "category": "Home Appliances"
+  },
+  {
+    "id": 6,
+    "name": "Desk Chair",
+    "price": 89.99,
+    "category": "Furniture"
+  },
+  {
+    "id": 7,
+    "name": "Bookshelf",
+    "price": 59.99,
+    "category": "Furniture"
+  },
+  {
+    "id": 8,
+    "name": "Running Shoes",
+    "price": 79.99,
+    "category": "Sportswear"
+  },
+  {
+    "id": 9,
+    "name": "T-shirt",
+    "price": 19.99,
+    "category": "Clothing"
+  },
+  {
+    "id": 10,
+    "name": "Backpack",
+    "price": 39.99,
+    "category": "Accessories"
+  }
+]

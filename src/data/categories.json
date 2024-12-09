@@ -1,0 +1,96 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "ARTEA GARA",
+      "subcategories": [
+        {
+          "id": 11,
+          "name": "Láminas",
+          "products": 10
+        },
+        {
+          "id": 12,
+          "name": "Serígrafias originales",
+          "products": 14
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "LIBROS",
+      "products": 69,
+      "subcategories": [
+        {
+          "id": 21,
+          "name": "Ficción y Novelas",
+          "products": 15,
+          "details": {
+            "Novela": 14,
+            "Literatura juvenil": 1
+          }
+        },
+        {
+          "id": 22,
+          "name": "Sociedad y Política",
+          "products": 25,
+          "details": {
+            "Política": 20,
+            "Memoria histórica": 3,
+            "Periodismo": 2
+          }
+        },
+        {
+          "id": 23,
+          "name": "Arte y Cultura",
+          "products": 8,
+          "details": {
+            "Fotografía": 6,
+            "Cancionero": 2
+          }
+        },
+        {
+          "id": 24,
+          "name": "Aventura y Viajes",
+          "products": 19,
+          "details": {
+            "Deportes": 2,
+            "Rutas Montaña": 5,
+            "Guías ciudades": 12
+          }
+        },
+        {
+          "id": 25,
+          "name": "Anuario",
+          "products": 10
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "MULTIMEDIA",
+      "subcategories": [
+        {
+          "id": 31,
+          "name": "Música",
+          "products": 4
+        },
+        {
+          "id": 32,
+          "name": "Cine y Documentales",
+          "products": 6
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "GOURMET/Cocina",
+      "products": 6
+    },
+    {
+      "id": 5,
+      "name": "CAMISETAS/TEXTIL",
+      "products": 2
+    }
+  ]
+}
