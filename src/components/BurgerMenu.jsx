@@ -38,7 +38,7 @@ const BurgerMenu = () => {
         {isOpen ? <MdClose /> : <MdDehaze />}
       </a>
       {isOpen && <div className="fixed inset-0 z-10" onClick={resetMenu}></div>}
-      <nav className={`bg-dark-grey text-white font-semibold absolute top-24 w-96 h-screen px-8 py-14 z-20 ${isOpen ? ' left-0' : '-left-96'}`}>
+      <nav className={`bg-dark-grey text-white font-semibold absolute top-24 w-96 h-[100vh-6rem] px-8 py-14 z-20 ${isOpen ? ' left-0' : '-left-96'}`}>
         {category ? (
           <ul className='text-xl flex flex-col gap-6'>
             <li><button onClick={() => setCategory(null)} className='text-2xl uppercase flex items-center'><MdArrowBack /> <span className='ml-6'>{category.name}</span></button></li>
