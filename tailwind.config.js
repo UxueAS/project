@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'graphik': 'Graphik'
+      },
       colors: {
         primary: '#F5A700',
         'dark-grey': '#333333',
