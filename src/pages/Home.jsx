@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Slider from '../components/Slider';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -9,9 +10,8 @@ const Home = () => {
       .then(data => setProducts(data.products));
   }, []);
   return (
-    <div>
-      <h1>Welcome to the Home Page</h1>
-      <p>This is the home page of your application.</p>
+    <div className='flex flex-col'>
+      <Slider />
       <Link to="/login">Login</Link>
       <ul>
         {products.map(product => (

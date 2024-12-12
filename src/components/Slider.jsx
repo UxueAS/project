@@ -1,0 +1,86 @@
+import { Link } from "react-router-dom";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import Foto1 from '../assets/slider/guggenheim.png';
+import Foto2 from '../assets/slider/concierto.png';
+import Foto3 from '../assets/slider/hotel.png';
+
+const responsive = {
+  superLargeDesktop: {
+    breakpoint: { max: 4000, min: 3000 },
+    items: 1
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 1
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1
+  }
+};
+
+const slides = [
+  {
+    tag: 'Sorteo',
+    title: 'Museo Guggenheim',
+    text: 'Participa en el sorteo para visitar el museo Guggenheim de Bilbao',
+    image: Foto1,
+    link: '/productos/todos'
+  },
+  {
+    tag: 'Promoción',
+    title: '2x1 en conciertos',
+    text: 'Disfruta de la mejor música en el Jazzaldia de San Sebastián con esta promoción',
+    image: Foto2,
+    link: '/productos/todos'
+  },
+  {
+    tag: 'Oferta',
+    title: 'Hotel 5 estrellas',
+    text: 'Reserva tu estancia en el hotel más lujoso de la ciudad al mejor precio',
+    image: Foto3,
+    link: '/productos/todos'
+  }
+]
+const Slider = () => {
+  
+  return (
+    <div className="h-96 w-full">
+      <Carousel
+        swipeable={false}
+        draggable={false}
+        showDots={true}
+        responsive={responsive}
+        ssr={true}
+        infinite={true}
+        autoPlay={false}
+        autoPlaySpeed={5000}
+        keyBoardControl={true}
+        customTransition="all .5s"
+        transitionDuration={500}
+        containerClass="carousel-container"
+        removeArrowOnDeviceType={["tablet", "mobile"]}
+        dotListClass="custom-dot-list-style"
+        itemClass="carousel-item-padding-40-px">
+          {slides.map((slide, index) => (
+            <div key={index} className="relative bg-black">
+              <img src={slide.image} alt={slide.title} className="opacity-80" />
+              <div className="absolute top-0 bottom-0 right-0 left-0 text-right py-10 px-32">
+                <div className="text-primary font-light text-xl uppercase">{slide.tag}</div>
+                <h2 className="text-white text-4xl font-bold mb-2">{slide.title}</h2>
+                <p className="w-1/2 ml-auto text-white font-bold text-3xl leading-8">{slide.text}</p>
+                <Link to={slide.link} className="bg-primary px-6 py-1 mt-4 inline-block font-light text-lg uppercase">Ver más</Link>
+              </div>
+            </div>
+          ))}
+      </Carousel>
+    </div>
+  );
+};
+
+export default Slider;
