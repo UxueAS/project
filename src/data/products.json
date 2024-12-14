@@ -1,62 +1,228 @@
 [
   {
     "id": 1,
-    "name": "Laptop",
-    "price": 999.99,
-    "category": "Electronics"
+    "title": "José Luis Zumeta",
+    "text": "Izenburu gabe El arte vasco se suma a GARA para hacer frente al expolio. Nueve reproducciones de alta calidad",
+    "img": "novedades1.png",
+    "tag": "",
+    "category": 311,
+    "price": 25
   },
   {
     "id": 2,
-    "name": "Smartphone",
-    "price": 699.99,
-    "category": "Electronics"
+    "title": "Ainize Txopitea",
+    "text": "'Globalización' El arte vasco se suma a GARA para hacer frente al expolio. Nueve reproducciones de alta calidad",
+    "img": "novedades2.png",
+    "tag": null,
+    "category": 311,
+    "price": 25
   },
   {
     "id": 3,
-    "name": "Headphones",
-    "price": 199.99,
-    "category": "Electronics"
+    "title": "Dora Salazar",
+    "text": "'Menina' el arte vasco se suma a GARA para hacer frente al expolio. Nueve reproducciones de alta calidad",
+    "img": "novedades3.png",
+    "tag": "sorteo",
+    "category": 311,
+    "price": 25
   },
   {
     "id": 4,
-    "name": "Coffee Maker",
-    "price": 49.99,
-    "category": "Home Appliances"
+    "title": "José Antonio Sistiaga",
+    "text": "Sin título. De la serie 'Velocidad luz-color' El arte vasco se suma a GARA para hacer frente al expolio. Nueve...",
+    "img": "novedades1.png",
+    "tag": null,
+    "category": 311,
+    "price": 25
   },
   {
     "id": 5,
-    "name": "Blender",
-    "price": 29.99,
-    "category": "Home Appliances"
+    "title": "Jesús Mari Lazkano",
+    "text": "'Todo lo sólido se desvanece en el aire II' El arte vasco se suma a GARA para hacer frente al expolio. Nueve...",
+    "img": "novedades1.png",
+    "tag": null,
+    "category": 311,
+    "price": 25
   },
   {
     "id": 6,
-    "name": "Desk Chair",
-    "price": 89.99,
-    "category": "Furniture"
+    "title": "Irantzu Lekue",
+    "text": "'Adierazpen askatasuna' El arte vasco se suma a GARA para hacer frente al expolio. Nueve reproducciones de alta calidad",
+    "img": "novedades1.png",
+    "tag": null,
+    "category": 311,
+    "price": 25
   },
   {
     "id": 7,
-    "name": "Bookshelf",
-    "price": 59.99,
-    "category": "Furniture"
+    "title": "Koldobika Jauregi",
+    "text": "Izenburu gabe. 'Poesia' sailekoa. El arte vasco se suma a GARA para hacer frente al expolio. Nueve reproducciones de...",
+    "img": "novedades1.png",
+    "tag": null,
+    "category": 311,
+    "price": 25
   },
   {
     "id": 8,
-    "name": "Running Shoes",
-    "price": 79.99,
-    "category": "Sportswear"
+    "title": "Juan Gorriti",
+    "text": "'Joxan Artzeri oroimenez' El arte vasco se suma a GARA para hacer frente al expolio. Nueve reproducciones de alta calidad",
+    "img": "novedades1.png",
+    "tag": null,
+    "category": 311,
+    "price": 25
   },
   {
     "id": 9,
-    "name": "T-shirt",
-    "price": 19.99,
-    "category": "Clothing"
+    "title": "Gonzalo Etxebarria",
+    "text": "'Arkadia' El arte vasco se suma a GARA para hacer frente al expolio. Nueve reproducciones de alta calidad",
+    "img": "novedades1.png",
+    "tag": null,
+    "category": 311,
+    "price": 25
   },
   {
     "id": 10,
-    "name": "Backpack",
-    "price": 39.99,
-    "category": "Accessories"
+    "title": "Litografía del Gernika",
+    "text": "Una edición de lujo, numerada, e impresa sobre papel de alta calidad Rives de 160 grs. Tamaño: 90x52 cm y a escala",
+    "img": "novedades1.png",
+    "tag": null,
+    "category": 311,
+    "price": 18
+  },
+  {
+    "id": 11,
+    "title": "Lote 14: Dos serigrafías",
+    "text": "LAZKANO-SISTIAGA. Serigrafías originales ARTEA GARA.",
+    "img": "novedades1.png",
+    "tag": null,
+    "category": 312,
+    "price": 500
+  },
+  {
+    "id": 12,
+    "title": "Lote 1: 2 serigrafías",
+    "text": "ZUMETA-GORRITI ARTEA GARA Serigrafia originalak.",
+    "img": "novedades1.png",
+    "tag": null,
+    "category": 312,
+    "price": 500
   }
+,
+{
+  "id": 13,
+  "title": "Lote 2: Dos serigrafías",
+  "text": "JAUREGI-SALAZAR. Serigrafías originales ARTEA GARA.",
+  "img": "novedades1.png",
+  "tag": null,
+  "category": 312,
+  "price": 500
+},
+{
+  "id": 14,
+  "title": "Lote 3: Dos serigrafías",
+  "text": "LAZKANO-ETXEBARRIA. Serigrafías originales ARTEA GARA.",
+  "img": "novedades1.png",
+  "tag": null,
+  "category": 312,
+  "price": 500
+},
+{
+  "id": 15,
+  "title": "Lote 4: Dos serigrafías",
+  "text": "SISTIAGA-LEKUE. Serigrafías originales ARTEA GARA.",
+  "img": "novedades1.png",
+  "tag": null,
+  "category": 312,
+  "price": 500
+},
+{
+  "id": 16,
+  "title": "Lote 5: Dos serigrafías",
+  "text": "ZUMETA-JAUREGI. Serigrafías originales ARTEA GARA.",
+  "img": "novedades1.png",
+  "tag": null,
+  "category": 312,
+  "price": 500
+},
+{
+  "id": 17,
+  "title": "Lote 6: Dos serigrafías",
+  "text": "ZUMETA-LEKUE. Serigrafías originales ARTEA GARA.",
+  "img": "novedades1.png",
+  "tag": null,
+  "category": 312,
+  "price": 500
+},
+{
+  "id": 18,
+  "title": "Lote 7: Dos serigrafías",
+  "text": "JAUREGI-ETXEBARRIA. Serigrafías originales ARTEA GARA.",
+  "img": "novedades1.png",
+  "tag": null,
+  "category": 312,
+  "price": 500
+},
+{
+  "id": 19,
+  "title": "Lote 8: Tres serigrafías",
+  "text": "LAZKANO-ZUMETA-GORRITI. Serigrafías originales ARTEA GARA.",
+  "img": "novedades1.png",
+  "tag": null,
+  "category": 312,
+  "price": 800
+},
+{
+  "id": 20,
+  "title": "Lote 9: Tres serigrafías",
+  "text": "LAZKANO-JAUREGI-SALAZAR. Serigrafías originales ARTEA GARA.",
+  "img": "novedades1.png",
+  "tag": null,
+  "category": 312,
+  "price": 800
+},
+{
+  "id": 21,
+  "title": "Lote 10: Tres serigrafías",
+  "text": "SISTIAGA-ZUMETA-LEKUE. Serigrafías originales ARTEA GARA.",
+  "img": "novedades1.png",
+  "tag": null,
+  "category": 312,
+  "price": 800
+},
+{
+  "id": 22,
+  "title": "Lote 11: Tres serigrafías",
+  "text": "SISTIAGA-JAUREGI-ETXEBARRIA. Serigrafías originales ARTEA GARA.",
+  "img": "novedades1.png",
+  "tag": null,
+  "category": 312,
+  "price": 800
+},
+{
+  "id": 23,
+  "title": "Lote 12: Cinco serigrafías",
+  "text": "LAZKANO-SISTIAGA-ZUMETA-GORRITI-SALAZAR. Serigrafías originales ARTEA GARA.",
+  "img": "novedades1.png",
+  "tag": null,
+  "category": 312,
+  "price": 1500
+},
+{
+  "id": 24,
+  "title": "Lote 13: Cinco serigrafías",
+  "text": "LAZKANO-SISTIAGA-JAUREGI-LEKUE-ETXEBARRIA. Serigrafías originales ARTEA GARA.",
+  "img": "novedades1.png",
+  "tag": null,
+  "category": 312,
+  "price": 1500
+},
+{
+  "id": 25,
+  "title": "Muerte a la reina de Navarra",
+  "text": "Guerra de religión, represión en la Alta Navarra, espionaje, intrigas cortesanas y asedios se cruzan en una trepidante trama sobre la supervivencia del viejo reino.",
+  "img": "novedades1.png",
+  "tag": null,
+  "category": 321,
+  "price": 15
+}
 ]

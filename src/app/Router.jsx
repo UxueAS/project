@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Promociones from '../pages/Promociones';
@@ -8,6 +8,7 @@ import Layout from '../components/Layout';
 import Favoritos from '../pages/Favoritos';
 import Carrito from '../pages/Carrito';
 const Router = () => {
+  const token = localStorage.getItem('token');
   return (
     <BrowserRouter>
       <Layout>
@@ -19,7 +20,7 @@ const Router = () => {
           <Route path="/productos/categoria/:id" element={<Category />} />
           <Route path="/favoritos" element={<Favoritos />} />
           <Route path="/carrito" element={<Carrito />} />  
-          <Route path="/login" element={<Login />} />  
+          <Route path="/login" element={ token ? <Navigate to="/" /> : <Login />} />  
           <Route path="*" element={<div>404</div> } />
         </Routes>
       </Layout>

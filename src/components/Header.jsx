@@ -1,9 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from '../assets/logo.png'
 import BurgerMenu from './BurgerMenu'
-import { MdOutlinePerson, MdFavoriteBorder, MdOutlineShoppingCart } from "react-icons/md";
+import { MdOutlinePerson, MdPerson, MdFavoriteBorder, MdOutlineShoppingCart } from "react-icons/md";
+import AuthService from '../services/auth';
 
 const Header = () => {
+  const navigate = useNavigate();
+  const logout = () => {
+    AuthService.logout();
+    console.log(AuthService.getToken());
+    navigate('/');
+  }
   return (
    <header className="h-24 border-b border-b-dark-grey">
       <nav className='h-full flex align-middle'>
@@ -14,7 +21,10 @@ const Header = () => {
             <input type="text" name='search' className='rounded-full px-6 py-1 border border-gray-400' placeholder='Buscar en NAIZ'/>
           </div>
           <div className='flex gap-2 mb-2 text-primary text-2xl'>
-            <Link to="/login"><MdOutlinePerson/><span className='sr-only'>Iniciar Sesión</span></Link>
+            { AuthService.getToken() ? 
+              <button onClick={logout} title="Cerrar Sesión"><MdPerson/><span className='sr-only'>Cerrar Sesión</span></button>
+              : <Link to="/login"><MdOutlinePerson/><span className='sr-only'>Iniciar Sesión</span></Link>
+            }
             <Link to="/favoritos"><MdFavoriteBorder/><span className='sr-only'>Favoritos</span></Link>
             <Link to="/carrito"><MdOutlineShoppingCart/><span className='sr-only'>Carrito</span></Link>
           </div>

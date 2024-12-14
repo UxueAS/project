@@ -14,28 +14,28 @@
       "name": "Productos",
       "categories": [
         {
-          "id": 1,
+          "id": 31,
           "name": "ARTEA GARA",
           "subcategories": [
             {
-              "id": 11,
+              "id": 311,
               "name": "Láminas",
               "products": 10
             },
             {
-              "id": 12,
+              "id": 312,
               "name": "Serígrafias originales",
               "products": 14
             }
           ]
         },
         {
-          "id": 2,
+          "id": 32,
           "name": "LIBROS",
           "products": 69,
           "subcategories": [
             {
-              "id": 21,
+              "id": 321,
               "name": "Ficción y Novelas",
               "products": 15,
               "details": {
@@ -44,7 +44,7 @@
               }
             },
             {
-              "id": 22,
+              "id": 322,
               "name": "Sociedad y Política",
               "products": 25,
               "details": {
@@ -54,7 +54,7 @@
               }
             },
             {
-              "id": 23,
+              "id": 323,
               "name": "Arte y Cultura",
               "products": 8,
               "details": {
@@ -63,7 +63,7 @@
               }
             },
             {
-              "id": 24,
+              "id": 324,
               "name": "Aventura y Viajes",
               "products": 19,
               "details": {
@@ -73,14 +73,14 @@
               }
             },
             {
-              "id": 25,
+              "id": 325,
               "name": "Anuario",
               "products": 10
             }
           ]
         },
         {
-          "id": 3,
+          "id": 33,
           "name": "MULTIMEDIA",
           "subcategories": [
             {
@@ -96,12 +96,12 @@
           ]
         },
         {
-          "id": 4,
+          "id": 34,
           "name": "GOURMET/Cocina",
           "products": 6
         },
         {
-          "id": 5,
+          "id": 35,
           "name": "CAMISETAS/TEXTIL",
           "products": 2
         }
