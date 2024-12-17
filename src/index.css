@@ -132,4 +132,7 @@
   body {
     @apply font-graphik;
   }
+  .react-multiple-carousel__arrow {
+    z-index: 20!important;
+  }
 }

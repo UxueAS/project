@@ -1,12 +1,37 @@
 import { useParams } from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import ProductCard from "../components/ProductCard";
 const Category = () => {
   const { id } = useParams();
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://dummyjson.com/c/d103-f866-4ce6-9b7f`)
+      .then(response => response.json())
+      .then(data => setProducts(data))
+      .catch(error => console.error("Error fetching products:", error));
+  }, [id]);
+
   return (
-    <div>
-      <h1>Welcome to the Category Page</h1>
-      <p>This is the category page of your application.</p>
-      <p>The category id is {id}</p>
+    <div className="flex flex-col">
+      <div className="bg-dark-grey text-white py-6">
+        <div className='mx-auto max-w-7xl w-full'>
+          <h3 className="text-2xl font-bold mb-6">Pensamos que te podrían interesar...</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {products.length > 4 && products.sort(() => 0.5 - Math.random()).slice(0, 4).map(product => (
+              <ProductCard key={product.id} product={product} color="bg-primary" />
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className='mx-auto max-w-7xl w-full py-6'>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8">
+          {products.map(product => (
+            <ProductCard key={product.id} product={product} color="bg-dark-grey" />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
