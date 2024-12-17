@@ -84,12 +84,12 @@
           "name": "MULTIMEDIA",
           "subcategories": [
             {
-              "id": 31,
+              "id": 331,
               "name": "Música",
               "products": 4
             },
             {
-              "id": 32,
+              "id": 332,
               "name": "Cine y Documentales",
               "products": 6
             }
