@@ -7,6 +7,7 @@ import Category from '../pages/Category';
 import Layout from '../components/Layout';
 import Favoritos from '../pages/Favoritos';
 import Carrito from '../pages/Carrito';
+import Product from '../pages/Product';
 const Router = () => {
   const token = localStorage.getItem('token');
   return (
@@ -18,6 +19,7 @@ const Router = () => {
           <Route path="/sorteos" element={<Sorteos />} />  
           <Route path="/productos/todos" element={<Category />} />
           <Route path="/productos/categoria/:id" element={<Category />} />
+          <Route path="/productos/:id" element={<Product />} />
           <Route path="/favoritos" element={<Favoritos />} />
           <Route path="/carrito" element={<Carrito />} />  
           <Route path="/login" element={ token ? <Navigate to="/" /> : <Login />} />  

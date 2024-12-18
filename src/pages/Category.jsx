@@ -5,9 +5,8 @@ const Category = () => {
   const { id } = useParams();
 
   const [products, setProducts] = useState([]);
-
   useEffect(() => {
-    fetch(`https://dummyjson.com/c/d103-f866-4ce6-9b7f`)
+    fetch(`${import.meta.env.VITE_API_URL}/products`)
       .then(response => response.json())
       .then(data => setProducts(data))
       .catch(error => console.error("Error fetching products:", error));
