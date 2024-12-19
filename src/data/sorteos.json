@@ -1,0 +1,50 @@
+[
+  {
+    "id": 108,
+    "title": "Sorteo de una noche con desayuno y circuito incluido en el hotel-balneario de Areatza",
+    "text": "Disfruta de una noche con desayuno y acceso al circuito termal en el hotel-balneario de Areatza.",
+    "img": "novedades2.png",
+    "tag": null,
+    "category": 332
+  },
+  {
+    "id": 109,
+    "title": "Sorteo de una noche para dos personas en el Hotel Txoriene",
+    "text": "Gana una noche para dos personas en el acogedor Hotel Txoriene.",
+    "img": "txoriene.jpg",
+    "tag": null,
+    "category": 332
+  },
+  {
+    "id": 110,
+    "title": "Dos entradas para el partido de pelota Ezkurdia-Rezusta vs. Artola-mariezkurrena II",
+    "text": "Participa y gana dos entradas para el emocionante partido de pelota entre Ezkurdia-Rezusta y Artola-mariezkurrena II.",
+    "img": "pelota.jpeg",
+    "tag": null,
+    "category": 332
+  },
+  {
+    "id": 111,
+    "title": "Sorteo de una cena para dos en el restaurante Arzak",
+    "text": "Gana una cena para dos personas en el prestigioso restaurante Arzak.",
+    "img": "arzak.jpg",
+    "tag": null,
+    "category": 332
+    },
+    {
+    "id": 112,
+    "title": "Sorteo de un fin de semana en una casa rural en el Valle de Baztán",
+    "text": "Disfruta de un fin de semana en una encantadora casa rural en el Valle de Baztán.",
+    "img": "casarural.jpg",
+    "tag": null,
+    "category": 332
+    },
+    {
+    "id": 113,
+    "title": "Sorteo de una visita guiada a las bodegas de La Rioja con cata incluida",
+    "text": "Gana una visita guiada a las bodegas de La Rioja con una cata de vinos incluida.",
+    "img": "vinedo.jpg",
+    "tag": null,
+    "category": 332
+    }
+]

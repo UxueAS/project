@@ -9,7 +9,7 @@ const BurgerMenu = () => {
   const [category, setCategory] = useState(null);
   const [openedSubcategory, setOpenedSubcategory] = useState(null);
   useEffect(() => {
-      fetch('https://dummyjson.com/c/0ff3-d1d2-4fb2-88f9')
+      fetch(`${import.meta.env.VITE_API_URL}/categories`)
         .then(response => response.json())
         .then(data => setMenuItems(data));
     }, []);

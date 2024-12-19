@@ -5,7 +5,7 @@ import StarRating from "../components/StarRating";
 import FAQ from "../components/FAQ";
 import images from '../assets/images';
 
-const Product = () => {
+const Product = ({ type }) => {
   const { id } = useParams();
 
   const [product, setProduct] = useState({});
@@ -13,11 +13,17 @@ const Product = () => {
   const [products, setProducts] = useState([]);
   const [cantidad, setCantidad] = useState(1);
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/products/${id}`)
+    if(type === 'sorteo') {
+      fetch(`${import.meta.env.VITE_API_URL}/sorteos/${id}`)
+        .then(response => response.json())
+        .then(data => setProduct(data))
+        .catch(error => console.error("Error fetching products:", error));
+    } else {
+      fetch(`${import.meta.env.VITE_API_URL}/products/${id}`)
       .then(response => response.json())
       .then(data => setProduct(data))
       .catch(error => console.error("Error fetching products:", error));
-    
+    }
     fetch(`${import.meta.env.VITE_API_URL}/products`)
       .then(response => response.json())
       .then(data => setProducts(data))
@@ -27,7 +33,7 @@ const Product = () => {
       .then(response => response.json())
       .then(data => setReviews(data))
       .catch(error => console.error("Error fetching products:", error));
-  }, [id]);
+  }, [id, type]);
 
   const handleCantidadChange = (e) => {
     setCantidad(e.target.value);
@@ -68,7 +74,7 @@ const Product = () => {
           <h3 className="text-2xl font-bold mb-6">También te podrían interesar...</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {products.length > 4 && products.sort(() => 0.5 - Math.random()).slice(0, 4).map(product => (
-              <ProductCard key={product.id} product={product} color="bg-primary" />
+              <ProductCard key={product.id} product={product} element="products" btnText="Comprar" color="bg-primary" />
             ))}
           </div>
         </div>
