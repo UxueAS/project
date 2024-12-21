@@ -27,7 +27,7 @@ const Category = () => {
           <h3 className="text-2xl font-bold mb-6">Pensamos que te podrían interesar...</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {products.length > 4 && products.sort(() => 0.5 - Math.random()).slice(0, 4).map(product => (
-              <ProductCard key={product.id} product={product} btnText="Comprar" element="products" color="bg-primary" />
+              <ProductCard key={product.id} product={product} btnText="Comprar" element="productos" color="bg-primary" />
             ))}
           </div>
         </div>
@@ -35,7 +35,7 @@ const Category = () => {
       <div className='mx-auto max-w-7xl w-full py-6'>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8">
           {products.map(product => (
-            <ProductCard key={product.id} product={product} element="products" btnText="Comprar" color="bg-dark-grey" />
+            <ProductCard key={product.id} product={product} element="productos" btnText="Comprar" color="bg-dark-grey" />
           ))}
         </div>
       </div>

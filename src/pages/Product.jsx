@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import PropTypes from 'prop-types';
 import ProductCard from "../components/ProductCard";
 import StarRating from "../components/StarRating";
 import FAQ from "../components/FAQ";
@@ -12,6 +13,7 @@ const Product = ({ type }) => {
   const [reviews, setReviews] = useState([]);
   const [products, setProducts] = useState([]);
   const [cantidad, setCantidad] = useState(1);
+  const [toggleReviews, setToggleReviews] = useState(false);
   useEffect(() => {
     if(type === 'sorteo') {
       fetch(`${import.meta.env.VITE_API_URL}/sorteos/${id}`)
@@ -39,12 +41,6 @@ const Product = ({ type }) => {
     setCantidad(e.target.value);
   };
 
-  const loadReviews = () => {
-    fetch(`${import.meta.env.VITE_API_URL}/products/${id}/reviews`)
-      .then(response => response.json())
-      .then(data => setReviews(prevReviews => [...prevReviews, ...data]))
-      .catch(error => console.error("Error fetching products:", error));
-  };
   return (
     <div className="flex flex-col">
       <div className='mx-auto max-w-7xl w-full flex my-12'>
@@ -74,7 +70,7 @@ const Product = ({ type }) => {
           <h3 className="text-2xl font-bold mb-6">También te podrían interesar...</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {products.length > 4 && products.sort(() => 0.5 - Math.random()).slice(0, 4).map(product => (
-              <ProductCard key={product.id} product={product} element="products" btnText="Comprar" color="bg-primary" />
+              <ProductCard key={product.id} product={product} element="productos" btnText="Comprar" color="bg-primary" />
             ))}
           </div>
         </div>
@@ -97,11 +93,19 @@ const Product = ({ type }) => {
             </div>
           ))}
         </div>
-        <button onClick={loadReviews} className="underline font-semibold text-lg mx-auto">Mostrar más opiniones</button>
+        {toggleReviews ?
+          <button onClick={() => setToggleReviews(!toggleReviews)} className="underline font-semibold text-lg mx-auto">Mostrar menos opiniones</button>
+          :
+          <button onClick={() => setToggleReviews(!toggleReviews)} className="underline font-semibold text-lg mx-auto">Mostrar más opiniones</button>
+        }
+        
         <FAQ />
     </div>
     </div>
   );
+};
+Product.propTypes = {
+  type: PropTypes.string.isRequired,
 };
 
 export default Product;
