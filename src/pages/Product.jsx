@@ -5,10 +5,11 @@ import ProductCard from "../components/ProductCard";
 import StarRating from "../components/StarRating";
 import FAQ from "../components/FAQ";
 import images from '../assets/images';
+import { useCartContext } from "../providers/CartProvider";
 
 const Product = ({ type }) => {
   const { id } = useParams();
-
+  const { addToCart, message } = useCartContext();
   const [product, setProduct] = useState({});
   const [reviews, setReviews] = useState([]);
   const [products, setProducts] = useState([]);
@@ -42,7 +43,13 @@ const Product = ({ type }) => {
   };
 
   return (
+   
     <div className="flex flex-col">
+       {message && (
+        <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-primary text-black text-center py-2 px-6 w-3/4 rounded-lg shadow-lg  transition-opacity duration-500 ease-in-out opacity-100 animate-fade-in">
+          {message}
+        </div>
+      )}
       <div className='mx-auto max-w-7xl w-full flex my-12'>
         <div className="w-1/2 pr-8">
           <img src={images[product.img]} alt={product.title} className="w-full h-full object-cover" />
@@ -60,7 +67,7 @@ const Product = ({ type }) => {
               value={cantidad} 
               onChange={handleCantidadChange} 
             />
-            <button className="bg-primary py-1 uppercase font-light text-lg text-black grow">Comprar</button>
+            <button className="bg-primary py-1 uppercase font-light text-lg text-black grow" onClick={() => addToCart(product, cantidad)}>Comprar</button>
           </div>
           <p>{ product.text }</p>
         </div>

@@ -3,12 +3,15 @@ import logo from '../assets/logo.png'
 import BurgerMenu from './BurgerMenu'
 import { MdOutlinePerson, MdPerson, MdFavoriteBorder, MdOutlineShoppingCart } from "react-icons/md";
 import AuthService from '../services/auth';
+import { useCartContext } from "../providers/CartProvider";
+
 
 const Header = () => {
   const navigate = useNavigate();
+  const { resetCart, getTotalItems } = useCartContext();
   const logout = () => {
     AuthService.logout();
-    console.log(AuthService.getToken());
+    resetCart();
     navigate('/');
   }
   return (
@@ -26,7 +29,15 @@ const Header = () => {
               : <Link to="/login"><MdOutlinePerson/><span className='sr-only'>Iniciar Sesión</span></Link>
             }
             <Link to="/favoritos"><MdFavoriteBorder/><span className='sr-only'>Favoritos</span></Link>
-            <Link to="/carrito"><MdOutlineShoppingCart/><span className='sr-only'>Carrito</span></Link>
+            <Link to="/carrito" className='relative'>
+              <MdOutlineShoppingCart/>
+              <span className='sr-only'>Carrito</span>
+              {getTotalItems() > 0 && (
+                <span className="absolute -top-1 -right-2 bg-primary text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                  {getTotalItems()}
+                </span>
+              )}
+            </Link>
           </div>
         </div>
       </nav>
