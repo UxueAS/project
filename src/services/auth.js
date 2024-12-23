@@ -23,7 +23,7 @@ const AuthService = {
     const data = await response.json();
     if (data.accessToken) {
       localStorage.setItem('token', data.accessToken);
-      localStorage.setItem('user', data);
+      localStorage.setItem('user', JSON.stringify(data));
       return data;
     } 
     error = data;
@@ -32,6 +32,6 @@ const AuthService = {
   logout: () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-  },
+  }
 };
 export default AuthService;

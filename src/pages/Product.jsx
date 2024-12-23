@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import ProductCard from "../components/ProductCard";
@@ -6,6 +6,8 @@ import StarRating from "../components/StarRating";
 import FAQ from "../components/FAQ";
 import images from '../assets/images';
 import { useCartContext } from "../providers/CartProvider";
+import { useFavoritesContext } from "../providers/FavoritesProvider";
+import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 
 const Product = ({ type }) => {
   const { id } = useParams();
@@ -42,6 +44,8 @@ const Product = ({ type }) => {
     setCantidad(e.target.value);
   };
 
+  const token = localStorage.getItem('token');
+  const { addToFavorites, removeFromFavorites, isFavorite } = useFavoritesContext();
   return (
    
     <div className="flex flex-col">
@@ -55,7 +59,22 @@ const Product = ({ type }) => {
           <img src={images[product.img]} alt={product.title} className="w-full h-full object-cover" />
         </div>
         <div className="w-1/2 pl-10 pt-12">
-          <h2 className="text-3xl font-bold mb-6">{ product.title }</h2>
+          <div className="flex justify-between items-center">
+            <h2 className="text-3xl font-bold mb-6">{ product.title }</h2>
+            <button
+              onClick={ token ? 
+                () => isFavorite(product.id)
+                  ? removeFromFavorites(product.id)
+                  : addToFavorites(product)
+                : () => <Navigate to='/login' />
+              }
+              className={`p-1 mb-6 text-3xl ${
+                isFavorite(product.id) ? 'text-primary' : 'hover:text-primary'
+              }`}
+            >
+              {isFavorite(product.id) ? <MdFavorite /> : <MdFavoriteBorder />}
+            </button>
+          </div>
           <div className="flex justify-between items-center mb-6">
             <p className="font-semibold text-3xl">{ product.price } €</p>
             <StarRating rating={product.rating} />
