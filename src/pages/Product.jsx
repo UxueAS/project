@@ -67,7 +67,10 @@ const Product = ({ type }) => {
               value={cantidad} 
               onChange={handleCantidadChange} 
             />
-            <button className="bg-primary py-1 uppercase font-light text-lg text-black grow" onClick={() => addToCart(product, cantidad)}>Comprar</button>
+            { product.stock > 0 ? 
+              <button className="bg-primary py-1 uppercase font-light text-lg text-black grow" onClick={() => addToCart(product, cantidad)}>Comprar</button>
+             : <button className="bg-primary/40 py-1 uppercase font-light text-lg text-black grow" disabled>AGOTADO</button> }
+            
           </div>
           <p>{ product.text }</p>
         </div>
