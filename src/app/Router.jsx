@@ -18,7 +18,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <CartProvider>
-        <FavoritesProvider userId={user.id ?? null}>
+        <FavoritesProvider userId={user ? user.id : null}>
           <Layout>
             <Routes>
               <Route path="/" element={<Home />} />  
