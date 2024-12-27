@@ -10,6 +10,7 @@ import Carrito from '../pages/Carrito';
 import Product from '../pages/Product';
 import CartProvider from '../providers/CartProvider';
 import FavoritesProvider from '../providers/FavoritesProvider';
+import ProductsProvider from '../providers/ProductsProvider';
 const Router = () => {
   const token = localStorage.getItem('token');
   let user = null;
@@ -17,25 +18,27 @@ const Router = () => {
     user = JSON.parse(localStorage.getItem('user'));
   return (
     <BrowserRouter>
-      <CartProvider>
-        <FavoritesProvider userId={user ? user.id : null}>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />  
-              <Route path="/promociones" element={<Promociones />} />  
-              <Route path="/sorteos" element={<Sorteos />} />  
-              <Route path="/productos/todos" element={<Category />} />
-              <Route path="/productos/categoria/:id" element={<Category />} />
-              <Route path="/productos/:id" element={<Product type="product" />} />
-              <Route path="/sorteos/:id" element={<Product type="sorteo" />} />
-              <Route path="/favoritos" element={ token ? <Favoritos /> : <Navigate to="/login" />} />
-              <Route path="/carrito" element={<Carrito />} />  
-              <Route path="/login" element={ token ? <Navigate to="/" /> : <Login />} />  
-              <Route path="*" element={<div>404</div> } />
-            </Routes>
-          </Layout>
-        </FavoritesProvider>
-      </CartProvider>
+      <ProductsProvider>
+        <CartProvider>
+          <FavoritesProvider userId={user ? user.id : null}>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />  
+                <Route path="/promociones" element={<Promociones />} />  
+                <Route path="/sorteos" element={<Sorteos />} />  
+                <Route path="/productos/todos" element={<Category />} />
+                <Route path="/productos/categoria/:id" element={<Category />} />
+                <Route path="/productos/:id" element={<Product type="product" />} />
+                <Route path="/sorteos/:id" element={<Product type="sorteo" />} />
+                <Route path="/favoritos" element={ token ? <Favoritos /> : <Navigate to="/login" />} />
+                <Route path="/carrito" element={<Carrito />} />  
+                <Route path="/login" element={ token ? <Navigate to="/" /> : <Login />} />  
+                <Route path="*" element={<div>404</div> } />
+              </Routes>
+            </Layout>
+          </FavoritesProvider>
+        </CartProvider>
+      </ProductsProvider>
     </BrowserRouter>
   );
 }

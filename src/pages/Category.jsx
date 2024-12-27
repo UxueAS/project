@@ -2,10 +2,11 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { MdClose, MdFilterList } from "react-icons/md";
+import { useProductsContext } from '../providers/ProductsProvider';
 const Category = () => {
   const { id } = useParams();
-
-  const [products, setProducts] = useState([]);
+  const { products } = useProductsContext();
+  const [categoryProducts, setCategoryProducts] = useState([]);
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
@@ -19,15 +20,14 @@ const Category = () => {
     if(id) {
       fetch(`${import.meta.env.VITE_API_URL}/categories/products/${id}`)
         .then(response => response.json())
-        .then(data => {setProducts(data.products); setFilteredProducts(data.products); setFeaturedProducts(data.products.sort(() => 0.5 - Math.random()).slice(0, 4));})
+        .then(data => {setCategoryProducts(data.products); setFilteredProducts(data.products); setFeaturedProducts(data.products.sort(() => 0.5 - Math.random()).slice(0, 4));})
         .catch(error => console.error("Error fetching products:", error));
     } else {
-       fetch(`${import.meta.env.VITE_API_URL}/products`)
-        .then(response => response.json())
-        .then(data => {setProducts(data); setFilteredProducts(data); setFeaturedProducts(data.sort(() => 0.5 - Math.random()).slice(0, 4));})
-        .catch(error => console.error("Error fetching products:", error));
+      setCategoryProducts(products);
+      setFilteredProducts(products);
+      setFeaturedProducts(products.sort(() => 0.5 - Math.random()).slice(0, 4));
     }
-  }, [id]);
+  }, [id, products]);
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
@@ -54,8 +54,8 @@ const Category = () => {
     const { sort, priceRange, tag } = filters;
 
     let updatedProducts = tag
-      ? products.filter((product) => product.tag === tag)
-      : products;
+      ? categoryProducts.filter((product) => product.tag === tag)
+      : categoryProducts;
 
     updatedProducts = updatedProducts.filter(
       (product) =>
@@ -76,7 +76,7 @@ const Category = () => {
 
   return (
     <div className="flex flex-col">
-      {products.length > 4 &&
+      {categoryProducts.length > 4 &&
         <div className="bg-dark-grey text-white py-6">
           <div className='mx-auto max-w-7xl w-full'>
             <h3 className="text-2xl font-bold mb-6">Pensamos que te podrían interesar...</h3>
