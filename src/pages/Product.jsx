@@ -76,7 +76,8 @@ const Product = ({ type }) => {
             </button>
           </div>
           <div className="flex justify-between items-center mb-6">
-            <p className="font-semibold text-3xl">{ product.price } €</p>
+            <p className="font-semibold text-3xl">
+              {product.discount ?  <><span className="line-through">{product.price}€</span> <span className="text-primary">{product.discount}€</span></> : <span>{product.price} €</span>}</p>
             <StarRating rating={product.rating} />
           </div>
           <div className="flex justify-between my-4 gap-4">

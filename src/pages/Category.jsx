@@ -125,7 +125,10 @@ const Category = () => {
                   onChange={handleFilterChange}
                   className="border rounded px-2 mt-1">
                   <option value="">--</option>
-                  <option value="new">Nuevo</option>
+                  <option value="Nuevo">Nuevo</option>
+                  <option value="Descuento">Descuento</option>
+                  <option value="Literatura Infantil">Literatura Infantil</option>
+                  <option value="Historia">Historia</option>
                 </select>
               </label>
               <button className="bg-dark-grey text-white py-1 rounded hover:bg-primary transition duration-300"

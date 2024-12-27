@@ -11,6 +11,7 @@ import Product from '../pages/Product';
 import CartProvider from '../providers/CartProvider';
 import FavoritesProvider from '../providers/FavoritesProvider';
 import ProductsProvider from '../providers/ProductsProvider';
+import ScrollToTop from '../components/ScrollToTop';
 const Router = () => {
   const token = localStorage.getItem('token');
   let user = null;
@@ -35,6 +36,7 @@ const Router = () => {
                 <Route path="/login" element={ token ? <Navigate to="/" /> : <Login />} />  
                 <Route path="*" element={<div>404</div> } />
               </Routes>
+              <ScrollToTop />
             </Layout>
           </FavoritesProvider>
         </CartProvider>
