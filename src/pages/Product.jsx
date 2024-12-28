@@ -1,4 +1,4 @@
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import ProductCard from "../components/ProductCard";
@@ -8,6 +8,7 @@ import images from '../assets/images';
 import { useCartContext } from "../providers/CartProvider";
 import { useFavoritesContext } from "../providers/FavoritesProvider";
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
+import MessageAlert from "../components/MessageAlert";
 
 const Product = ({ type }) => {
   const { id } = useParams();
@@ -17,6 +18,9 @@ const Product = ({ type }) => {
   const [products, setProducts] = useState([]);
   const [cantidad, setCantidad] = useState(1);
   const [toggleReviews, setToggleReviews] = useState(false);
+  const [showSorteoModal, setShowSorteoModal] = useState(false);
+  const [sorteoMessage, setSorteoMessage] = useState(null);
+  const navigate = useNavigate();
   useEffect(() => {
     if(type === 'sorteo') {
       fetch(`${import.meta.env.VITE_API_URL}/sorteos/${id}`)
@@ -43,17 +47,18 @@ const Product = ({ type }) => {
   const handleCantidadChange = (e) => {
     setCantidad(e.target.value);
   };
-
+  const handleConfirmar = () => {
+    setShowSorteoModal(false);
+    setSorteoMessage('¡Gracias por participar en el sorteo!');
+    setTimeout(() => setSorteoMessage(null), 3000);
+  };
   const token = localStorage.getItem('token');
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavoritesContext();
   return (
    
     <div className="flex flex-col">
-       {message && (
-        <div className="fixed top-28 left-1/2 transform -translate-x-1/2 bg-primary text-black text-center py-2 px-6 w-3/4 rounded-lg shadow-lg  transition-opacity duration-500 ease-in-out opacity-100 animate-fade-in">
-          {message}
-        </div>
-      )}
+      <MessageAlert message={message} />
+      <MessageAlert message={sorteoMessage} />
       <div className='mx-auto max-w-7xl w-full flex my-12'>
         <div className="w-1/2 pr-8">
           <img src={images[product.img]} alt={product.title} className="w-full h-full object-cover" />
@@ -66,7 +71,7 @@ const Product = ({ type }) => {
                 () => isFavorite(product.id)
                   ? removeFromFavorites(product.id)
                   : addToFavorites(product)
-                : () => <Navigate to='/login' />
+                : () => navigate('/login')
               }
               className={`p-1 mb-6 text-3xl ${
                 isFavorite(product.id) ? 'text-primary' : 'hover:text-primary'
@@ -77,17 +82,50 @@ const Product = ({ type }) => {
           </div>
           <div className="flex justify-between items-center mb-6">
             <p className="font-semibold text-3xl">
-              {product.discount ?  <><span className="line-through">{product.price}€</span> <span className="text-primary">{product.discount}€</span></> : <span>{product.price} €</span>}</p>
+              {product.discount ?  <><span className="line-through">{product.price}€</span> <span className="text-primary">{product.discount}€</span></> : product.price ? <span>{product.price} €</span> : null}</p>
             <StarRating rating={product.rating} />
           </div>
           <div className="flex justify-between my-4 gap-4">
-            <input 
-              type="number" 
-              className="border border-dark-grey py-1 px-2" 
-              value={cantidad} 
-              onChange={handleCantidadChange} 
-            />
-            { product.stock > 0 ? 
+            { type == 'product' &&
+              <input 
+                type="number" 
+                className="border border-dark-grey py-1 px-2" 
+                value={cantidad} 
+                onChange={handleCantidadChange} 
+              />
+            }
+            { type == 'sorteo' ?
+              <><button className="bg-primary py-1 uppercase font-light text-lg text-black grow" 
+              onClick={ token ? 
+                () => {setShowSorteoModal(true);}
+                : () => navigate('/login')
+              }>Participar</button>
+              {showSorteoModal && (
+              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                <div className="bg-white text-dark-grey text-center rounded p-6 shadow-lg w-11/12 max-w-xl">
+                  <h2 className="text-xl font-bold mb-4">Condiciones del Sorteo</h2>
+                  <p className="mb-6">
+                    Al participar en este sorteo, aceptas los términos y condiciones. 
+                    Por favor, confirma para continuar.
+                  </p>
+                  <div className="flex justify-center space-x-4">
+                    <button
+                      onClick={handleConfirmar}
+                      className="px-4 py-2 bg-primary text-white font-semibold  uppercase hover:bg-primary/75 transition"
+                    >
+                      Confirmar Participación
+                    </button>
+                    <button
+                      onClick={() => setShowSorteoModal(false)}
+                      className="px-4 py-2 bg-gray-300 text-gray-700 font-semibold hover:bg-gray-400 transition"
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}</>
+            : product.stock > 0 ? 
               <button className="bg-primary py-1 uppercase font-light text-lg text-black grow" onClick={() => addToCart(product, cantidad)}>Comprar</button>
              : <button className="bg-primary/40 py-1 uppercase font-light text-lg text-black grow" disabled>AGOTADO</button> }
             

@@ -61,7 +61,7 @@ const FavoritesProvider = ({ children, userId }) => {
 };
 FavoritesProvider.propTypes = {
   children: PropTypes.node.isRequired,
-  userId: PropTypes.string,
+  userId: PropTypes.number,
 };
 
 export default FavoritesProvider;
