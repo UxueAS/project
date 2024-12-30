@@ -20,12 +20,14 @@ const Category = () => {
     if(id) {
       fetch(`${import.meta.env.VITE_API_URL}/categories/products/${id}`)
         .then(response => response.json())
-        .then(data => {setCategoryProducts(data.products); setFilteredProducts(data.products); setFeaturedProducts(data.products.sort(() => 0.5 - Math.random()).slice(0, 4));})
+        .then(data => {
+          setCategoryProducts(data.products); setFilteredProducts(data.products); 
+          setFeaturedProducts([...data.products].sort(() => 0.5 - Math.random()).slice(0, 4));})
         .catch(error => console.error("Error fetching products:", error));
     } else {
       setCategoryProducts(products);
       setFilteredProducts(products);
-      setFeaturedProducts(products.sort(() => 0.5 - Math.random()).slice(0, 4));
+      setFeaturedProducts([...products].sort(() => Math.random() - 0.5).slice(0, 4));
     }
   }, [id, products]);
 
@@ -79,7 +81,9 @@ const Category = () => {
       {categoryProducts.length > 4 &&
         <div className="bg-dark-grey text-white py-6">
           <div className='mx-auto max-w-7xl w-full'>
-            <h3 className="text-2xl font-bold mb-6">Pensamos que te podrían interesar...</h3>
+            <h3 className="text-2xl font-bold mb-6">
+              Pensamos que te podrían interesar...
+            </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {featuredProducts.map(product => (
                 <ProductCard key={product.id} product={product} btnText="Comprar" element="productos" color="bg-primary" />
