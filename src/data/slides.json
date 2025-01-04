@@ -1,0 +1,25 @@
+[
+  {
+    "id": 711,
+    "tag": "Sorteo",
+    "title": "Museo Guggenheim",
+    "text": "Participa en el sorteo para visitar el museo Guggenheim de Bilbao",
+    "img": "slide1.png",
+    "type": "sorteos"
+  },
+  { "id": 712,
+    "tag": "Promoción",
+    "title": "2x1 en conciertos",
+    "text": "Disfruta de la mejor música en el Jazzaldia de San Sebastián con esta promoción",
+    "img": "slide2.png",
+    "type": "promociones"
+  },
+  {
+    "id": 713,
+    "tag": "Promoción",
+    "title": "Hotel 5 estrellas",
+    "text": "Reserva tu estancia en el hotel más lujoso de la ciudad al mejor precio",
+    "img": "slide3.png",
+    "type": "promociones"
+  }
+]

@@ -31,6 +31,7 @@ const Router = () => {
                 <Route path="/productos/categoria/:id" element={<Category />} />
                 <Route path="/productos/:id" element={<Product type="product" />} />
                 <Route path="/sorteos/:id" element={<Product type="sorteo" />} />
+                <Route path="/promociones/:id" element={<Product type="promocion" />} />
                 <Route path="/favoritos" element={ token ? <Favoritos /> : <Navigate to="/login" />} />
                 <Route path="/carrito" element={<Carrito />} />  
                 <Route path="/login" element={ token ? <Navigate to="/" /> : <Login />} />  

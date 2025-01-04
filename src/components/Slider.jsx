@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import Foto1 from '../assets/slider/guggenheim.png';
-import Foto2 from '../assets/slider/concierto.png';
-import Foto3 from '../assets/slider/hotel.png';
+import { useEffect, useState } from "react";
+import images from '../assets/images';
 
 const responsive = {
   superLargeDesktop: {
@@ -24,31 +23,13 @@ const responsive = {
   }
 };
 
-const slides = [
-  {
-    tag: 'Sorteo',
-    title: 'Museo Guggenheim',
-    text: 'Participa en el sorteo para visitar el museo Guggenheim de Bilbao',
-    image: Foto1,
-    link: '/productos/todos'
-  },
-  {
-    tag: 'Promoción',
-    title: '2x1 en conciertos',
-    text: 'Disfruta de la mejor música en el Jazzaldia de San Sebastián con esta promoción',
-    image: Foto2,
-    link: '/productos/todos'
-  },
-  {
-    tag: 'Oferta',
-    title: 'Hotel 5 estrellas',
-    text: 'Reserva tu estancia en el hotel más lujoso de la ciudad al mejor precio',
-    image: Foto3,
-    link: '/productos/todos'
-  }
-]
 const Slider = () => {
-  
+  const [slides, setSlides] = useState([]);
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/slides`)
+      .then(response => response.json())
+      .then(data =>{ setSlides(data)});
+  }, []);
   return (
     <div className="h-96 w-full">
       <Carousel
@@ -69,12 +50,12 @@ const Slider = () => {
         itemClass="carousel-item-padding-40-px">
           {slides.map((slide, index) => (
             <div key={index} className="relative bg-black">
-              <img src={slide.image} alt={slide.title} className="opacity-80" />
+              <img src={images[slide.img]} alt={slide.title} className="opacity-80" />
               <div className="absolute top-0 bottom-0 right-0 left-0 text-right py-10 px-32">
                 <div className="text-primary font-light text-xl uppercase">{slide.tag}</div>
                 <h2 className="text-white text-4xl font-bold mb-2">{slide.title}</h2>
                 <p className="w-1/2 ml-auto text-white font-bold text-3xl leading-8">{slide.text}</p>
-                <Link to={slide.link} className="bg-primary px-6 py-1 mt-4 inline-block font-light text-lg uppercase">Ver más</Link>
+                <Link to={`/${slide.type}/${slide.id}`} className="bg-primary px-6 py-1 mt-4 inline-block font-light text-lg uppercase">Ver más</Link>
               </div>
             </div>
           ))}

@@ -112,6 +112,9 @@ import Guia13 from './guia13.png';
 import Guia14 from './guia14.png';
 import Guia15 from './guia15.png';
 import Guia16 from './guia16.png';
+import Slide1 from './guggenheim.png';
+import Slide2 from './concierto.png';
+import Slide3 from './hotel.png';
 
 const images = {
   "novedades4.png": Novedad1,
@@ -227,7 +230,10 @@ const images = {
   "guia13.png": Guia13,
   "guia14.png": Guia14,
   "guia15.png": Guia15,
-  "guia16.png": Guia16
+  "guia16.png": Guia16,
+  "slide1.png": Slide1,
+  "slide2.png": Slide2,
+  "slide3.png": Slide3
 };
 
 export default images;
