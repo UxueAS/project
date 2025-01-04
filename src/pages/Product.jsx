@@ -27,6 +27,11 @@ const Product = ({ type }) => {
         .then(response => response.json())
         .then(data => setProduct(data))
         .catch(error => console.error("Error fetching products:", error));
+    } else if(type === 'promocion') {
+      fetch(`${import.meta.env.VITE_API_URL}/promociones/${id}`)
+        .then(response => response.json())
+        .then(data => setProduct(data))
+        .catch(error => console.error("Error fetching products:", error));
     } else {
       fetch(`${import.meta.env.VITE_API_URL}/products/${id}`)
       .then(response => response.json())
