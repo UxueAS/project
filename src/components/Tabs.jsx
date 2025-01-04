@@ -23,7 +23,7 @@ const Tabs = () => {
   return (
     <div>
       <div className='flex justify-center gap-40 border-b mb-10 font-semibold text-3xl'>
-        <button onClick={() => setTab('promociones')} className={`px-8 py-2 ${tab === 'ofertas' ? 'text-primary border-b-2 border-b-primary' : 'text-black'}`}>Promociones</button>
+        <button onClick={() => setTab('promociones')} className={`px-8 py-2 ${tab === 'promociones' ? 'text-primary border-b-2 border-b-primary' : 'text-black'}`}>Promociones</button>
         <button onClick={() => setTab('sorteos')} className={`px-4 py-2 ${tab === 'sorteos' ? 'text-primary border-b-2 border-b-primary' : 'text-black'}`}>Sorteos</button>
         <button onClick={() => setTab('productos')} className={`px-4 py-2 ${tab === 'productos' ? 'text-primary border-b-2 border-b-primary' : 'text-black'}`}>Productos</button>
       </div>
