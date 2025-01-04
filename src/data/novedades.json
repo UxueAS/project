@@ -1,34 +1,44 @@
 [
   {
-    "id": 1,
-    "title": "Lote de vinos de Viña Olabarri",
-    "text": "Sorteo de un lote de vinos para cada ganador",
-    "img": "novedades1.png",
-    "tag": "sorteo",
-    "category": ""
-  },
-  {
-    "id": 2,
-    "title": "Camiseta de la selección EH",
-    "text": "Camiseta técnica deportiva creada por la iniciativa Gu Ere Bai",
-    "img": "novedades2.png",
+    "id": 7,
+    "title": "Koldobika Jauregi",
+    "text": "Izenburu gabe. 'Poesia' sailekoa. El arte vasco se suma a GARA para hacer frente al expolio. Nueve reproducciones de...",
+    "img": "jauregi.jpg",
     "tag": null,
-    "category": ""
+    "category": 311,
+    "price": 25,
+    "rating": 5,
+    "stock": 27,
+    "type": "producto"
   },
   {
-    "id": 3,
-    "title": "Hotel Balneario Orduña",
-    "text": "Una noche para dos personas en el hotel balneario de Orduña, desayuno y circuito incluidos",
-    "img": "novedades3.png",
-    "tag": "sorteo",
-    "category": ""
-  },
-  {
-    "id": 4,
-    "title": "Etorkizuneko Artefaktua",
-    "text": "La vida de un país desde el periodismo vasco. 1977-2024",
-    "img": "novedades1.png",
+    "id": 112,
+    "title": "Sorteo de un fin de semana en una casa rural en el Valle de Baztán",
+    "text": "Disfruta de un fin de semana en una encantadora casa rural en el Valle de Baztán.",
+    "img": "casarural.jpg",
     "tag": null,
-    "category": ""
+    "category": 332,
+    "type": "sorteo"
+  },
+  {
+        "id": 33,
+    "title": "Réquiem por Navarra",
+    "text": "Una novela imprescindible para conocer un episodio clave de la historia de nuestro país",
+        "img": "libro9.png",
+        "tag": null,
+        "category": 321,
+        "price": 10,
+        "rating": 4,
+        "stock": 30,
+        "type": "producto"
+  },
+  {
+    "id": 113,
+    "title": "Sorteo de una visita guiada a las bodegas de La Rioja con cata incluida",
+    "text": "Gana una visita guiada a las bodegas de La Rioja con una cata de vinos incluida.",
+    "img": "vinedo.jpg",
+    "tag": null,
+    "category": 332,
+    "type": "sorteo"
   }
 ]
