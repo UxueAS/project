@@ -26,7 +26,7 @@ const ProductCard = ({ product, color, btnText, element }) => {
       <MessageAlert message={sorteoMessage} />
       <Link className='group' to={`/${element}/${product.id}`}>
         <div className='w-full h-52 overflow-hidden mb-2 relative'>
-          <img src={images[product.img]} alt={product.title} className='object-cover -translate-y-12 group-hover:scale-110 transition-transform duration-300' />
+          <img src={images[product.img]} alt={product.title} className='object-cover w-full h-full group-hover:scale-110 transition-transform duration-300' />
           { product.stock == 0 ? <span className='bg-red-500 text-white text-center py-1 px-2 text-xs absolute top-2 right-2 rounded-full'>Agotado</span> : null }
           { product.tag ? <span className='bg-primary text-white uppercase text-center py-1 px-2 text-xs absolute top-2 right-2 rounded-full'>{product.tag}</span> : null }
         </div>
