@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "title": "Lote de vinos de Viña Olabarri",
+        "text": "Sorteo de un lote de vinos para cada ganador",
+        "img": "novedades1.png",
+        "tag": "sorteo"
+    },
+    {
+        "id": 2,
+        "title": "Camiseta de la selección EH",
+        "text": "Camiseta técnica deportiva creada por la iniciativa Gu Ere Bai",
+        "img": "novedades2.png",
+        "tag": null
+    },
+    {
+        "id": 3,
+        "title": "Hotel Balneario Orduña",
+        "text": "Una noche para dos personas en el hotel balneario de Orduña, desayuno y circuito incluidos",
+        "img": "novedades3.png",
+        "tag": "sorteo"
+    },
+    {
+        "id": 4,
+        "title": "Etorkizuneko Artefaktua",
+        "text": "La vida de un país desde el periodismo vasco. 1977-2024",
+        "img": "novedades4.png",
+        "tag": null
+    }
+]

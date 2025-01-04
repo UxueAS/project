@@ -16,9 +16,6 @@ const Footer = () => {
         
         <div className="flex flex-col gap-2">
           <Link to="/productos/todos" className="hover:underline">Productos</Link>
-          <Link to="/productos/todos" className="ml-4 text-lg font-normal hover:underline">Productos</Link>
-          <Link to="/productos/todos" className="ml-4 text-lg font-normal hover:underline">Productos</Link>
-          <Link to="/productos/todos" className="ml-4 text-lg font-normal hover:underline">Productos</Link>
         </div>
       </div>
       <div className="w-full text-center">

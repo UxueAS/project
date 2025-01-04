@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Favoritos = () => {
   const [novedades, setNovedades] = useState([]);
   useEffect(() => {
-    fetch('https://dummyjson.com/c/ba4f-47e4-4ceb-8beb')
+    fetch(`${import.meta.env.VITE_API_URL}/favoritos`)
       .then(response => response.json())
       .then(data => setNovedades(data));
   }, []);
