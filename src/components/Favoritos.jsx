@@ -1,21 +1,26 @@
 import {useState, useEffect} from 'react';
 import images from '../assets/images';
 import { Link } from 'react-router-dom';
+import { useFavoritesContext } from '../providers/FavoritesProvider';
 
 const Favoritos = () => {
   const [novedades, setNovedades] = useState([]);
+  const { favorites } = useFavoritesContext();
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/favoritos`)
       .then(response => response.json())
-      .then(data => setNovedades(data));
-  }, []);
+      .then(data => setNovedades([...favorites, ...data]));
+  }, [favorites]);
   return (
     <div>
       <h2 className='text-center text-3xl font-semibold mb-8'>Mis productos favoritos</h2>
         <div className='grid grid-cols-4 gap-6 mb-10'>
-          {novedades.map(product => (
+          {novedades.sort(() => 0.5 - Math.random()).slice(0, 4).map(product => (
             <div key={product.id} className='flex flex-col'>
-              <img src={images[product.img]} alt={product.title} className='w-full aspect-square' />
+              <div className='w-full aspect-square'>
+                <img src={images[product.img]} alt={product.title} className='object-cover w-full h-full' />
+              </div>
+              
               <Link to={`/product/${product.id}`}>
                 <h3 className='font-semibold text-2xl'>{product.title}</h3>
               </Link>
