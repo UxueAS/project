@@ -19,12 +19,52 @@ const Login = () => {
         
      
   };
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    console.log(form)
+    const username = form.username.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
+    const password = form.password.value;
+    const confirmPassword = form['confirm-password'].value;
+    const language = form.language.value;
+
+    if (password !== confirmPassword) {
+      setError({ message: 'Las contraseñas no coinciden' });
+      return;
+    }
+    console.log(JSON.stringify({ username, email, phone, password, language }));
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, phone, password, language }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        setError({ message: errorData.message });
+        return;
+      }
+
+      const data = await response.json();
+      console.log(data)
+      AuthService.setToken(data.id);
+      navigate('/');
+    } catch (error) {
+      setError({ message: 'Error en el registro' });
+    }
+  };
   return (
     <div className='mx-auto max-w-7xl w-full py-8'>
       <h2 className='font-bold text-4xl w-3/4'>Crea tu cuenta y descubre todo lo que hemos preparado para ti.</h2>
       <div className='flex flex-wrap'>
         <div className='w-1/2 px-12 py-4 border-r border-gray-300'>
-          <form className='mt-8 space-y-4' action='#' method='POST'>
+          <form className='mt-8 space-y-4' action='/api/users' method='POST' onSubmit={handleRegister} >
+            
             <h3 className='font-bold text-2xl mb-2'>Registrarse</h3>
             <div>
               <label htmlFor='username' className='sr-only'>Nombre de usuario</label>
