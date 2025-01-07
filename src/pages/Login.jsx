@@ -6,6 +6,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [registerError, setRegisterError] = useState('');
   const navigate = useNavigate();
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -30,7 +31,7 @@ const Login = () => {
     const language = form.language.value;
 
     if (password !== confirmPassword) {
-      setError({ message: 'Las contraseñas no coinciden' });
+      setRegisterError({ message: 'Las contraseñas no coinciden' });
       return;
     }
     fetch(`${import.meta.env.VITE_API_URL}/users`, {
@@ -46,7 +47,7 @@ const Login = () => {
       localStorage.setItem('user', JSON.stringify(data));
       navigate('/');
     })
-    .catch(error => setError({ message: error.message || 'Error en el registro'}));
+    .catch(error => setRegisterError({ message: error.message || 'Error en el registro'}));
   };
   return (
     <div className='mx-auto max-w-7xl w-full py-8'>
@@ -56,6 +57,7 @@ const Login = () => {
           <form className='mt-8 space-y-4' action='/api/users' method='POST' onSubmit={handleRegister} >
             
             <h3 className='font-bold text-2xl mb-2'>Registrarse</h3>
+            {registerError && <p className='text-red-500'>{registerError.message}</p>}
             <div>
               <label htmlFor='username' className='sr-only'>Nombre de usuario</label>
               <input
