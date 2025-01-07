@@ -22,7 +22,6 @@ const Login = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     const form = e.target;
-    console.log(form)
     const username = form.username.value;
     const email = form.email.value;
     const phone = form.phone.value;
@@ -34,29 +33,20 @@ const Login = () => {
       setError({ message: 'Las contraseñas no coinciden' });
       return;
     }
-    console.log(JSON.stringify({ username, email, phone, password, language }));
-    try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/users`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, email, phone, password, language }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        setError({ message: errorData.message });
-        return;
-      }
-
-      const data = await response.json();
-      console.log(data)
-      AuthService.setToken(data.id);
+    fetch(`${import.meta.env.VITE_API_URL}/users`, {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json',
+      },
+      body: JSON.stringify([{ username, email, phone, password, language }]),
+    })
+    .then(response => response.json())
+    .then(data => {
+      localStorage.setItem('token', data.id);
+      localStorage.setItem('user', JSON.stringify(data));
       navigate('/');
-    } catch (error) {
-      setError({ message: 'Error en el registro' });
-    }
+    })
+    .catch(error => setError({ message: error.message || 'Error en el registro'}));
   };
   return (
     <div className='mx-auto max-w-7xl w-full py-8'>
