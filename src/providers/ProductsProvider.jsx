@@ -9,7 +9,7 @@ const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    getProducts.then(data => {setProducts(data);})
+    getProducts().then(data => {setProducts(data);})
         .catch(error => console.error("Error fetching products:", error));
   }, []);
 

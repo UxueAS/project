@@ -6,7 +6,7 @@ import { getNovedades } from '../services/api';
 const Novedades = () => {
   const [novedades, setNovedades] = useState([]);
   useEffect(() => {
-    getNovedades.then(data => setNovedades(data));
+    getNovedades().then(data => setNovedades(data));
   }, []);
   return (
     <div>

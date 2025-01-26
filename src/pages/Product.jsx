@@ -33,7 +33,7 @@ const Product = ({ type }) => {
       getProduct(id).then(data => setProduct(data))
       .catch(error => console.error("Error fetching products:", error));
     }
-    getProducts.then(data => setProducts(data))
+    getProducts().then(data => setProducts(data))
       .catch(error => console.error("Error fetching products:", error));
 
     fetch(`${import.meta.env.VITE_API_URL}/products/${id}/reviews`)

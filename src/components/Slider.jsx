@@ -27,7 +27,7 @@ const responsive = {
 const Slider = () => {
   const [slides, setSlides] = useState([]);
   useEffect(() => {
-    getSlides.then(data =>{ setSlides(data)});
+    getSlides().then(data =>{ setSlides(data)});
   }, []);
   return (
     <div className="h-96 w-full">

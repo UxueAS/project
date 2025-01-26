@@ -10,7 +10,7 @@ const BurgerMenu = () => {
   const [category, setCategory] = useState(null);
   const [openedSubcategory, setOpenedSubcategory] = useState(null);
   useEffect(() => {
-      getCategories.then(data => setMenuItems(data));
+      getCategories().then(data => setMenuItems(data));
     }, []);
 
   const toggleMenu = () => {

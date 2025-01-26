@@ -8,7 +8,7 @@ const Favoritos = () => {
   const [novedades, setNovedades] = useState([]);
   const { favorites } = useFavoritesContext();
   useEffect(() => {
-    getFavoritos.then(data => setNovedades([...favorites, ...data]));
+    getFavoritos().then(data => setNovedades([...favorites, ...data]));
   }, [favorites]);
   return (
     <div>

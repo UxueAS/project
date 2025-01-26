@@ -9,10 +9,10 @@ const Tabs = () => {
   const [productos, setProductos] = useState([]);
   const [tab, setTab] = useState('promociones');
   useEffect(() => {
-    getProducts.then(data => setProductos(data.splice(0,4)));
-    getSorteos.then(data => setSorteos(data.splice(0,4)))
+    getProducts().then(data => setProductos(data.splice(0,4)));
+    getSorteos().then(data => setSorteos(data.splice(0,4)))
         .catch(error => console.error("Error fetching sorteos:", error));
-    getPromociones.then(data => setPromociones(data.splice(0,4)))
+    getPromociones().then(data => setPromociones(data.splice(0,4)))
         .catch(error => console.error("Error fetching promociones:", error));
   }, []);
   return (

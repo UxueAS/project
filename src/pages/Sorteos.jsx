@@ -5,7 +5,7 @@ const Sorteos = () => {
 
   const [sorteos, setSorteos] = useState([]);
   useEffect(() => {
-    getSorteos.then(data => setSorteos(data))
+    getSorteos().then(data => setSorteos(data))
       .catch(error => console.error("Error fetching sorteos:", error));
   }, []);
 
