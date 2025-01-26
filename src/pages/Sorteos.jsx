@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
+import { getSorteos } from "../services/api";
 const Sorteos = () => {
 
   const [sorteos, setSorteos] = useState([]);
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/sorteos`)
-      .then(response => response.json())
-      .then(data => setSorteos(data))
+    getSorteos.then(data => setSorteos(data))
       .catch(error => console.error("Error fetching sorteos:", error));
   }, []);
 

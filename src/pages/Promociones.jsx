@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
+import { getNovedades, getPromociones } from "../services/api";
 const Promociones = () => {
 
   const [promociones, setPromociones] = useState([]);
   const [novedades, setNovedades] = useState([]);
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/promociones`)
-      .then(response => response.json())
-      .then(data => setPromociones(data))
+    getPromociones.then(data => setPromociones(data))
       .catch(error => console.error("Error fetching promociones:", error));
-    fetch(`${import.meta.env.VITE_API_URL}/novedades`)
-      .then(response => response.json())
-      .then(data => setNovedades(data))
+    getNovedades.then(data => setNovedades(data))
       .catch(error => console.error("Error fetching novedades:", error));
   }, []);
 

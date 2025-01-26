@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { MdClose, MdFilterList } from "react-icons/md";
 import { useProductsContext } from '../providers/ProductsProvider';
+import { getCategoryProducts } from "../services/api";
 const Category = () => {
   const { id } = useParams();
   const { products } = useProductsContext();
@@ -18,9 +19,7 @@ const Category = () => {
 
   useEffect(() => {
     if(id) {
-      fetch(`${import.meta.env.VITE_API_URL}/categories/products/${id}`)
-        .then(response => response.json())
-        .then(data => {
+      getCategoryProducts(id).then(data => {
           setCategoryProducts(data.products); setFilteredProducts(data.products); 
           setFeaturedProducts([...data.products].sort(() => 0.5 - Math.random()).slice(0, 4));})
         .catch(error => console.error("Error fetching products:", error));

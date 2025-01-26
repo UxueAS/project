@@ -3,6 +3,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useEffect, useState } from "react";
 import images from '../assets/images';
+import { getSlides } from "../services/api";
 
 const responsive = {
   superLargeDesktop: {
@@ -26,9 +27,7 @@ const responsive = {
 const Slider = () => {
   const [slides, setSlides] = useState([]);
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/slides`)
-      .then(response => response.json())
-      .then(data =>{ setSlides(data)});
+    getSlides.then(data =>{ setSlides(data)});
   }, []);
   return (
     <div className="h-96 w-full">

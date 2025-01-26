@@ -2,14 +2,13 @@ import {useState, useEffect} from 'react';
 import images from '../assets/images';
 import { Link } from 'react-router-dom';
 import { useFavoritesContext } from '../providers/FavoritesProvider';
+import { getFavoritos } from '../services/api';
 
 const Favoritos = () => {
   const [novedades, setNovedades] = useState([]);
   const { favorites } = useFavoritesContext();
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/favoritos`)
-      .then(response => response.json())
-      .then(data => setNovedades([...favorites, ...data]));
+    getFavoritos.then(data => setNovedades([...favorites, ...data]));
   }, [favorites]);
   return (
     <div>

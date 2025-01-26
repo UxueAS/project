@@ -1,13 +1,12 @@
 import {useState, useEffect} from 'react';
 import images from '../assets/images';
 import { Link } from 'react-router-dom';
+import { getNovedades } from '../services/api';
 
 const Novedades = () => {
   const [novedades, setNovedades] = useState([]);
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/novedades`)
-      .then(response => response.json())
-      .then(data => setNovedades(data));
+    getNovedades.then(data => setNovedades(data));
   }, []);
   return (
     <div>

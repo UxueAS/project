@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { MdDehaze, MdArrowForward, MdArrowBack, MdClose, MdOutlineAdd, MdOutlineRemove } from "react-icons/md";
 import {Link} from 'react-router-dom';
+import { getCategories } from '../services/api';
 
 
 const BurgerMenu = () => {
@@ -9,9 +10,7 @@ const BurgerMenu = () => {
   const [category, setCategory] = useState(null);
   const [openedSubcategory, setOpenedSubcategory] = useState(null);
   useEffect(() => {
-      fetch(`${import.meta.env.VITE_API_URL}/categories`)
-        .then(response => response.json())
-        .then(data => setMenuItems(data));
+      getCategories.then(data => setMenuItems(data));
     }, []);
 
   const toggleMenu = () => {

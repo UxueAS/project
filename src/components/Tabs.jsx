@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import TabCard from './TabCard';
+import { getProducts, getPromociones, getSorteos } from '../services/api';
 
 const Tabs = () => {
   const [promociones, setPromociones] = useState([]);
@@ -8,16 +9,10 @@ const Tabs = () => {
   const [productos, setProductos] = useState([]);
   const [tab, setTab] = useState('promociones');
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/products`)
-      .then(response => response.json())
-      .then(data => setProductos(data.splice(0,4)));
-    fetch(`${import.meta.env.VITE_API_URL}/sorteos`)
-        .then(response => response.json())
-        .then(data => setSorteos(data.splice(0,4)))
+    getProducts.then(data => setProductos(data.splice(0,4)));
+    getSorteos.then(data => setSorteos(data.splice(0,4)))
         .catch(error => console.error("Error fetching sorteos:", error));
-    fetch(`${import.meta.env.VITE_API_URL}/promociones`)
-        .then(response => response.json())
-        .then(data => setPromociones(data.splice(0,4)))
+    getPromociones.then(data => setPromociones(data.splice(0,4)))
         .catch(error => console.error("Error fetching promociones:", error));
   }, []);
   return (

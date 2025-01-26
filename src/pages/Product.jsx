@@ -9,6 +9,7 @@ import { useCartContext } from "../providers/CartProvider";
 import { useFavoritesContext } from "../providers/FavoritesProvider";
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 import MessageAlert from "../components/MessageAlert";
+import { getProduct, getSorteo, getPromocion, getProducts } from "../services/api";
 
 const Product = ({ type }) => {
   const { id } = useParams();
@@ -23,24 +24,16 @@ const Product = ({ type }) => {
   const navigate = useNavigate();
   useEffect(() => {
     if(type === 'sorteo') {
-      fetch(`${import.meta.env.VITE_API_URL}/sorteos/${id}`)
-        .then(response => response.json())
-        .then(data => setProduct(data))
+      getSorteo(id).then(data => setProduct(data))
         .catch(error => console.error("Error fetching products:", error));
     } else if(type === 'promocion') {
-      fetch(`${import.meta.env.VITE_API_URL}/promociones/${id}`)
-        .then(response => response.json())
-        .then(data => setProduct(data))
+      getPromocion(id).then(data => setProduct(data))
         .catch(error => console.error("Error fetching products:", error));
     } else {
-      fetch(`${import.meta.env.VITE_API_URL}/products/${id}`)
-      .then(response => response.json())
-      .then(data => setProduct(data))
+      getProduct(id).then(data => setProduct(data))
       .catch(error => console.error("Error fetching products:", error));
     }
-    fetch(`${import.meta.env.VITE_API_URL}/products`)
-      .then(response => response.json())
-      .then(data => setProducts(data))
+    getProducts.then(data => setProducts(data))
       .catch(error => console.error("Error fetching products:", error));
 
     fetch(`${import.meta.env.VITE_API_URL}/products/${id}/reviews`)
