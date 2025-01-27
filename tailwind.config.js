@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'graphik': 'Graphik'
+        'default': 'Montserrat'
       },
       colors: {
         primary: '#F5A700',
