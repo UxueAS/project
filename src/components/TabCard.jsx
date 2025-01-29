@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const TabCard = ({ product, type }) => {
   return (
-    <div key={product.id} className='grid grid-cols-2 bg-slate-200 h-36'>
+    <div key={product.id} className='grid grid-cols-1 md:grid-cols-2 bg-slate-200 h-60 lg:h-36'>
       <div className='overflow-hidden'>
         <img src={images[product.img]} alt={product.title} className='object-cover w-full h-full'/>
       </div>

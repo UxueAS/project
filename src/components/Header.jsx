@@ -53,7 +53,7 @@ const Header = () => {
         <BurgerMenu />
         <Link to="/" className="mr-4 flex flex-col justify-end pb-4"><img src={logo} alt="NAIZ" className='h-10' /></Link>
         <div className='ml-auto flex items-end gap-2 mb-4 mr-6'>
-          <div>
+          <div className='hidden md:block'>
             <input type="text"
               name='search'
               value={searchTerm}

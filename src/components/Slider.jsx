@@ -30,7 +30,7 @@ const Slider = () => {
     getSlides().then(data =>{ setSlides(data)});
   }, []);
   return (
-    <div className="h-96 w-full">
+    <div className="h-72 lg:h-96 w-full mb-4 lg:mb-0">
       <Carousel
         swipeable={false}
         draggable={false}
@@ -43,17 +43,18 @@ const Slider = () => {
         keyBoardControl={true}
         customTransition="all .5s"
         transitionDuration={500}
-        containerClass="carousel-container"
+        containerClass="carousel-container min-h-full"
         removeArrowOnDeviceType={["tablet", "mobile"]}
         dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px">
+        sliderClass="h-full"
+        itemClass="carousel-item-padding-40-px h-72 lg:h-auto">
           {slides.map((slide, index) => (
-            <div key={index} className="relative bg-black">
-              <img src={images[slide.img]} alt={slide.title} className="opacity-80" />
-              <div className="absolute top-0 bottom-0 right-0 left-0 text-right py-10 px-32">
-                <div className="text-primary font-light text-xl uppercase">{slide.tag}</div>
-                <h2 className="text-white text-4xl font-bold mb-2">{slide.title}</h2>
-                <p className="w-1/2 ml-auto text-white font-bold text-3xl leading-8">{slide.text}</p>
+            <div key={index} className="relative bg-black h-full w-full">
+              <img src={images[slide.img]} alt={slide.title} className="opacity-80 object-cover h-full w-full" />
+              <div className="absolute top-0 bottom-0 right-0 left-0 text-right py-10 px-6 lg:px-32">
+                <div className="text-primary font-light text-base lg:text-xl uppercase">{slide.tag}</div>
+                <h2 className="text-white text-xl lg:text-4xl font-bold mb-2">{slide.title}</h2>
+                <p className="w-full lg:w-1/2 ml-auto text-white font-bold text-lg md:text-3xl leading-8">{slide.text}</p>
                 <Link to={`/${slide.type}/${slide.id}`} className="bg-primary px-6 py-1 mt-4 inline-block font-light text-lg uppercase">Ver más</Link>
               </div>
             </div>

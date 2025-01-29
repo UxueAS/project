@@ -11,7 +11,7 @@ const Novedades = () => {
   return (
     <div>
       <h2 className='text-center text-3xl font-semibold mb-8'>Novedades</h2>
-        <div className='grid grid-cols-4 gap-6 mb-10'>
+        <div className='grid grid-cols-1 lg:grid-cols-4 gap-6 mb-10'>
           {novedades.map(product => (
             <div key={product.id} className='flex flex-col'>
               <img src={images[product.img]} alt={product.title} className='w-full aspect-square' />

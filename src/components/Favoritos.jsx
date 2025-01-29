@@ -13,7 +13,7 @@ const Favoritos = () => {
   return (
     <div>
       <h2 className='text-center text-3xl font-semibold mb-8'>Mis productos favoritos</h2>
-        <div className='grid grid-cols-4 gap-6 mb-10'>
+        <div className='grid grid-cols-1 lg:grid-cols-4 gap-6 mb-10'>
           {novedades.sort(() => 0.5 - Math.random()).slice(0, 4).map(product => (
             <div key={product.id} className='flex flex-col'>
               <div className='w-full aspect-square'>
