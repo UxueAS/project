@@ -50,10 +50,10 @@ const Login = () => {
     .catch(error => setRegisterError({ message: error.message || 'Error en el registro'}));
   };
   return (
-    <div className='mx-auto max-w-7xl w-full py-8'>
+    <div className='mx-auto max-w-7xl w-full py-8 px-2 lg:px-0'>
       <h2 className='font-bold text-4xl w-3/4'>Crea tu cuenta y descubre todo lo que hemos preparado para ti.</h2>
       <div className='flex flex-wrap'>
-        <div className='w-1/2 px-12 py-4 border-r border-gray-300'>
+        <div className='w-full lg:w-1/2 px-4 lg:px-12 py-4 border-r border-gray-300'>
           <form className='mt-8 space-y-4' action='/api/users' method='POST' onSubmit={handleRegister} >
             
             <h3 className='font-bold text-2xl mb-2'>Registrarse</h3>
@@ -145,7 +145,7 @@ const Login = () => {
             </div>
           </form>
         </div>
-        <div className='w-1/2 px-12 py-4 flex flex-col justify-center'>
+        <div className='w-full lg:w-1/2 px-4 lg:px-12 py-4 flex flex-col justify-center'>
           <form className='space-y-4' action='#' method='POST'>
             <h3 className='font-bold text-2xl mb-2'>Iniciar sesión</h3>
             {error && <p className='text-red-500'>{error.message}</p>}

@@ -12,7 +12,7 @@ const Carrito = () => {
     }
   };
   return (
-    <div className='mx-auto max-w-7xl w-full flex flex-col my-12'>
+    <div className='mx-auto max-w-7xl w-full flex flex-col my-12 px-2 lg:px-0'>
       <h2 className='font-bold text-2xl'>Mi carrito</h2>
       {cart.length === 0 ? (
           <div className="text-center">
