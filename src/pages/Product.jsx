@@ -57,11 +57,11 @@ const Product = ({ type }) => {
     <div className="flex flex-col">
       <MessageAlert message={message} />
       <MessageAlert message={sorteoMessage} />
-      <div className='mx-auto max-w-7xl w-full flex my-12'>
-        <div className="w-1/2 pr-8">
+      <div className='mx-auto max-w-7xl w-full flex flex-wrap mb-6 lg:my-12'>
+        <div className="w-full lg:w-1/2 lg:pr-8">
           <img src={images[product.img]} alt={product.title} className="w-full h-full object-cover" />
         </div>
-        <div className="w-1/2 pl-10 pt-12">
+        <div className="w-full lg:w-1/2 px-2 lg:pl-10 pt-12">
           <div className="flex justify-between items-center">
             <h2 className="text-3xl font-bold mb-6">{ product.title }</h2>
             <button
@@ -133,16 +133,18 @@ const Product = ({ type }) => {
         </div>
       </div>
       <div className="bg-dark-grey text-white py-6">
-        <div className='mx-auto max-w-7xl w-full'>
+        <div className='mx-auto max-w-7xl w-full px-2 lg:px-0'>
           <h3 className="text-2xl font-bold mb-6">También te podrían interesar...</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="flex lg:grid grid-cols-2 md:grid-cols-4 gap-4 overflow-auto">
             {products.length > 4 && products.sort(() => 0.5 - Math.random()).slice(0, 4).map(product => (
-              <ProductCard key={product.id} product={product} element="productos" btnText="Comprar" color="bg-primary" />
+              <div key={product.id} className="min-w-56 lg:w-auto">
+                <ProductCard key={product.id} product={product} element="productos" btnText="Comprar" color="bg-primary" />
+              </div>
             ))}
           </div>
         </div>
       </div>
-      <div className='mx-auto max-w-7xl w-full my-12 flex flex-col'>
+      <div className='mx-auto max-w-7xl w-full my-12 flex flex-col px-2 lg:px-0'>
         <h3 className="text-2xl font-bold mb-6">Opiniones de otros usuarios</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           {reviews.map(review => (

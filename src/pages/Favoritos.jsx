@@ -5,9 +5,9 @@ const Favoritos = () => {
 
   const { favorites } = useFavoritesContext();
   return (
-    <div className='mx-auto max-w-7xl w-full my-12'>
+    <div className='mx-auto max-w-7xl w-full my-12 px-2 lg:px-0'>
       <h2 className="font-bold text-center text-3xl mb-6">Mis productos favoritos</h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {favorites.map((product) => (
           <ProductCard key={product.id} product={product} btnText="Ver" element="productos" color="bg-primary" />
         ))}
