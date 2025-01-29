@@ -79,22 +79,24 @@ const Category = () => {
     <div className="flex flex-col">
       {categoryProducts.length > 4 &&
         <div className="bg-dark-grey text-white py-6">
-          <div className='mx-auto max-w-7xl w-full'>
+          <div className='mx-auto max-w-7xl w-full px-2 lg:px-0'>
             <h3 className="text-2xl font-bold mb-6">
               Pensamos que te podrían interesar...
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="flex flex-nowrap lg:grid lg:grid-cols-4 gap-4 overflow-auto">
               {featuredProducts.map(product => (
-                <ProductCard key={product.id} product={product} btnText="Comprar" element="productos" color="bg-primary" />
+                <div key={product.id} className="min-w-56 lg:w-auto">
+                  <ProductCard key={product.id} product={product} btnText="Comprar" element="productos" color="bg-primary" />
+                </div>
               ))}
             </div>
           </div>
         </div> 
       }
-      <div className='mx-auto max-w-7xl w-full pb-6'>
+      <div className='mx-auto max-w-7xl w-full pb-6 px-2 lg:px-0'>
         <div className="h-12 py-2 flex mb-4 justify-end">
             <button className="text-dark-grey hover:text-primary transition text-xl flex" title="Filtros" onClick={() => setShowFilters(!showFilters)}><span className="text-sm mr-2">Filtrar</span> <MdFilterList /><span className="sr-only">Filtros</span></button>
-            <div className={`bg-white shadow p-4 w-1/4 flex flex-col gap-4 fixed top-0 bottom-0 right-0 ${showFilters ? 'translate-x-0' : 'translate-x-full'} transition z-10`}>
+            <div className={`bg-white shadow p-4 w-3/4 lg:w-1/4 flex flex-col gap-4 fixed top-0 bottom-0 right-0 ${showFilters ? 'translate-x-0' : 'translate-x-full'} transition z-10`}>
               <button className="ml-auto" onClick={() => setShowFilters(false)}><MdClose /></button>
               <h3 className="text-lg font-bold mb-2 flex items-center gap-2"><MdFilterList />Filtrar productos</h3>
               <label className="flex flex-col">
@@ -138,7 +140,7 @@ const Category = () => {
                 onClick={applyFilters}>Filtrar</button>
             </div>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-x-4 gap-y-8">
           {filteredProducts.map(product => (
             <ProductCard key={product.id} product={product} element="productos" btnText="Comprar" color="bg-dark-grey" />
           ))}

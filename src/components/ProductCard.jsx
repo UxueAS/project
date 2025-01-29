@@ -21,7 +21,7 @@ const ProductCard = ({ product, color, btnText, element }) => {
   };
 
   return (
-    <div key={product.id} className='flex flex-col'>
+    <div key={product.id} className='w-full flex flex-col'>
       <MessageAlert message={message} />
       <MessageAlert message={sorteoMessage} />
       <Link className='group' to={`/${element}/${product.id}`}>
