@@ -20,7 +20,7 @@ const Favoritos = () => {
                 <img src={images[product.img]} alt={product.title} className='object-cover w-full h-full' />
               </div>
               
-              <Link to={`/product/${product.id}`}>
+              <Link to={`/productos/${product.id}`}>
                 <h3 className='font-semibold text-2xl'>{product.title}</h3>
               </Link>
               <p className='text-lg'>{product.text}</p>

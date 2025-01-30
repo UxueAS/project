@@ -1,15 +1,15 @@
 import {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import TabCard from './TabCard';
-import { getProducts, getPromociones, getSorteos } from '../services/api';
+import { getPromociones, getSorteos } from '../services/api';
+import { useProductsContext } from '../providers/ProductsProvider';
 
 const Tabs = () => {
+  const { products } = useProductsContext();
   const [promociones, setPromociones] = useState([]);
   const [sorteos, setSorteos] = useState([]);
-  const [productos, setProductos] = useState([]);
   const [tab, setTab] = useState('promociones');
   useEffect(() => {
-    getProducts().then(data => setProductos(data.splice(0,4)));
     getSorteos().then(data => setSorteos(data.splice(0,4)))
         .catch(error => console.error("Error fetching sorteos:", error));
     getPromociones().then(data => setPromociones(data.splice(0,4)))
@@ -47,7 +47,7 @@ const Tabs = () => {
       {tab === 'productos' && 
         <div className='mb-6 flex flex-col items-center'>
           <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 mb-10'>
-          {productos.map(product => (
+          {products.splice(0,4).map(product => (
             <TabCard key={product.id} product={product} type="productos" />
           ))}
           </div>

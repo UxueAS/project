@@ -6,6 +6,7 @@ import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 import { useCartContext } from '../providers/CartProvider';
 import MessageAlert from './MessageAlert';
 import { useState } from 'react';
+import { useSorteosContext } from '../providers/SorteosProvider';
 
 const ProductCard = ({ product, color, btnText, element }) => {
   const token = localStorage.getItem('token');
@@ -13,8 +14,10 @@ const ProductCard = ({ product, color, btnText, element }) => {
   const { addToCart, message } = useCartContext();
   const [showSorteoModal, setShowSorteoModal] = useState(false);
   const [sorteoMessage, setSorteoMessage] = useState(null);
+  const {participarSorteo} = useSorteosContext();
   const navigate = useNavigate();
   const handleConfirmar = () => {
+    participarSorteo(product);
     setShowSorteoModal(false);
     setSorteoMessage('¡Gracias por participar en el sorteo!');
     setTimeout(() => setSorteoMessage(null), 3000);

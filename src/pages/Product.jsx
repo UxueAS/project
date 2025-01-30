@@ -9,18 +9,21 @@ import { useCartContext } from "../providers/CartProvider";
 import { useFavoritesContext } from "../providers/FavoritesProvider";
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 import MessageAlert from "../components/MessageAlert";
-import { getProduct, getSorteo, getPromocion, getProducts } from "../services/api";
+import { getProduct, getSorteo, getPromocion } from "../services/api";
+import { useProductsContext } from '../providers/ProductsProvider';
+import { useSorteosContext } from "../providers/SorteosProvider";
 
 const Product = ({ type }) => {
   const { id } = useParams();
   const { addToCart, message } = useCartContext();
   const [product, setProduct] = useState({});
   const [reviews, setReviews] = useState([]);
-  const [products, setProducts] = useState([]);
   const [cantidad, setCantidad] = useState(1);
   const [toggleReviews, setToggleReviews] = useState(false);
   const [showSorteoModal, setShowSorteoModal] = useState(false);
   const [sorteoMessage, setSorteoMessage] = useState(null);
+  const {products} = useProductsContext();
+  const {participarSorteo} = useSorteosContext();
   const navigate = useNavigate();
   useEffect(() => {
     if(type === 'sorteo') {
@@ -33,9 +36,6 @@ const Product = ({ type }) => {
       getProduct(id).then(data => setProduct(data))
       .catch(error => console.error("Error fetching products:", error));
     }
-    getProducts().then(data => setProducts(data))
-      .catch(error => console.error("Error fetching products:", error));
-
     fetch(`${import.meta.env.VITE_API_URL}/products/${id}/reviews`)
       .then(response => response.json())
       .then(data => setReviews(data))
@@ -46,6 +46,7 @@ const Product = ({ type }) => {
     setCantidad(e.target.value);
   };
   const handleConfirmar = () => {
+    participarSorteo(product);
     setShowSorteoModal(false);
     setSorteoMessage('¡Gracias por participar en el sorteo!');
     setTimeout(() => setSorteoMessage(null), 3000);
@@ -138,7 +139,7 @@ const Product = ({ type }) => {
           <div className="flex lg:grid grid-cols-2 md:grid-cols-4 gap-4 overflow-auto">
             {products.length > 4 && products.sort(() => 0.5 - Math.random()).slice(0, 4).map(product => (
               <div key={product.id} className="min-w-56 lg:w-auto">
-                <ProductCard key={product.id} product={product} element="productos" btnText="Comprar" color="bg-primary" />
+                <ProductCard product={product} element="productos" btnText="Comprar" color="bg-primary" />
               </div>
             ))}
           </div>
