@@ -12,6 +12,8 @@ import MessageAlert from "../components/MessageAlert";
 import { getProduct, getSorteo, getPromocion } from "../services/api";
 import { useProductsContext } from '../providers/ProductsProvider';
 import { useSorteosContext } from "../providers/SorteosProvider";
+import SorteoModal from "../components/SorteoModal";
+import SubscriptionModal from "../components/SubscriptionModal";
 
 const Product = ({ type }) => {
   const { id } = useParams();
@@ -21,6 +23,7 @@ const Product = ({ type }) => {
   const [cantidad, setCantidad] = useState(1);
   const [toggleReviews, setToggleReviews] = useState(false);
   const [showSorteoModal, setShowSorteoModal] = useState(false);
+  const [showSubscribeModal, setShowSubscribeModal] = useState(false);
   const [sorteoMessage, setSorteoMessage] = useState(null);
   const {products} = useProductsContext();
   const {participarSorteo} = useSorteosContext();
@@ -63,6 +66,7 @@ const Product = ({ type }) => {
           <img src={images[product.img]} alt={product.title} className="w-full h-full object-cover" />
         </div>
         <div className="w-full lg:w-1/2 px-2 lg:pl-10 pt-12">
+          { product.access == 'subscription' ? <div className="mb-2"><span className='bg-primary text-white uppercase text-center py-1 px-2 text-xs rounded-full'>Premium</span></div> : (product.tag ? <span className='bg-primary text-white uppercase text-center py-1 px-2 text-xs rounded-full'>{product.tag}</span> : null) }
           <div className="flex justify-between items-center">
             <h2 className="text-3xl font-bold mb-6">{ product.title }</h2>
             <button
@@ -96,36 +100,14 @@ const Product = ({ type }) => {
             }
             { type == 'sorteo' ?
               <><button className="bg-primary py-1 uppercase font-light text-lg text-black grow" 
-              onClick={ token ? 
-                () => {setShowSorteoModal(true);}
-                : () => navigate('/login')
-              }>Participar</button>
-              {showSorteoModal && (
-              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                <div className="bg-white text-dark-grey text-center rounded p-6 shadow-lg w-11/12 max-w-xl">
-                  <h2 className="text-xl font-bold mb-4">Condiciones del Sorteo</h2>
-                  <p className="mb-6">
-                    Al participar en este sorteo, aceptas los términos y condiciones. 
-                    Por favor, confirma para continuar.
-                  </p>
-                  <div className="flex justify-center space-x-4">
-                    <button
-                      onClick={handleConfirmar}
-                      className="px-4 py-2 bg-primary text-white font-semibold  uppercase hover:bg-primary/75 transition"
-                    >
-                      Confirmar Participación
-                    </button>
-                    <button
-                      onClick={() => setShowSorteoModal(false)}
-                      className="px-4 py-2 bg-gray-300 text-gray-700 font-semibold hover:bg-gray-400 transition"
-                    >
-                      Cancelar
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}</>
-            : product.stock > 0 ? 
+              onClick={ token ? ( product.access == 'logged' ?
+              () => {setShowSorteoModal(true); } : () => {setShowSubscribeModal(true)})
+              : () => navigate('/login')
+            }>Participar</button>
+              <SorteoModal showSorteoModal={showSorteoModal} setShowSorteoModal={setShowSorteoModal} handleConfirmar={handleConfirmar} />
+               <SubscriptionModal showSubscribeModal={showSubscribeModal} setShowSubscribeModal={setShowSubscribeModal} />
+            </>
+            : type == 'producto' && product.stock > 0 ? 
               <button disabled={cantidad < 1} className="bg-primary py-1 uppercase font-light text-lg text-black grow disabled:opacity-65" onClick={() => addToCart(product, cantidad)}>Comprar</button>
              : <button className="bg-primary/40 py-1 uppercase font-light text-lg text-black grow" disabled>AGOTADO</button> }
             

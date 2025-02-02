@@ -52,7 +52,7 @@ const Slider = () => {
             <div key={index} className="relative bg-black h-full w-full">
               <img src={images[slide.img]} alt={slide.title} className="opacity-80 object-cover h-full w-full" />
               <div className="absolute top-0 bottom-0 right-0 left-0 text-right py-10 px-6 lg:px-32">
-                <div className="text-primary font-light text-base lg:text-xl uppercase">{slide.tag}</div>
+                <div className="text-primary font-light text-base lg:text-xl uppercase">{slide.tag}{ slide.access == 'subscription' ? ' | Premium' : ''}</div>
                 <h2 className="text-white text-xl lg:text-4xl font-bold mb-2">{slide.title}</h2>
                 <p className="w-full lg:w-1/2 ml-auto text-white font-bold text-lg md:text-3xl leading-8">{slide.text}</p>
                 <Link to={`/${slide.type}/${slide.id}`} className="bg-primary px-6 py-1 mt-4 inline-block font-light text-lg uppercase">Ver más</Link>
