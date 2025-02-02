@@ -35,6 +35,7 @@ const ProductCard = ({ product, color, btnText, element }) => {
           <img src={images[product.img]} alt={product.title} className='object-cover w-full h-full group-hover:scale-110 transition-transform duration-300' />
           { product.stock == 0 ? <span className='bg-red-500 text-white text-center py-1 px-2 text-xs absolute top-2 right-2 rounded-full'>Agotado</span> : null }
           { product.access == 'subscription' ? <span className='bg-primary text-white uppercase text-center py-1 px-2 text-xs absolute top-2 right-2 rounded-full'>Premium</span> : (product.tag ? <span className='bg-primary text-white uppercase text-center py-1 px-2 text-xs absolute top-2 right-2 rounded-full'>{product.tag}</span> : null) }
+          { product.due_date && <span className='bg-dark-grey text-white shadow font-semibold text-center py-1 px-2 text-xs absolute top-2 left-2'>{ product.due_date }</span>}
         </div>
         <h3 className='font-semibold text-2xl mb-2 line-clamp-2'>{product.title}</h3>
         <div className='flex gap-2'>
@@ -87,7 +88,8 @@ ProductCard.propTypes = {
     tag: PropTypes.string,
     price: PropTypes.number,
     discount: PropTypes.number,
-    access: PropTypes.string.isRequired
+    access: PropTypes.string.isRequired,
+    due_date: PropTypes.string
   }).isRequired,
   color: PropTypes.string.isRequired,
   btnText: PropTypes.string.isRequired,

@@ -14,6 +14,7 @@ import { useProductsContext } from '../providers/ProductsProvider';
 import { useSorteosContext } from "../providers/SorteosProvider";
 import SorteoModal from "../components/SorteoModal";
 import SubscriptionModal from "../components/SubscriptionModal";
+import Timer from "../components/Timer";
 
 const Product = ({ type }) => {
   const { id } = useParams();
@@ -99,14 +100,16 @@ const Product = ({ type }) => {
               />
             }
             { type == 'sorteo' ?
-              <><button className="bg-primary py-1 uppercase font-light text-lg text-black grow" 
+              <div className="w-full flex flex-col gap-2">
+                {product.due_date && <Timer date={product.due_date} />}
+                <button className="bg-primary py-1 uppercase font-light text-lg text-black grow" 
               onClick={ token ? ( product.access == 'logged' ?
               () => {setShowSorteoModal(true); } : () => {setShowSubscribeModal(true)})
               : () => navigate('/login')
             }>Participar</button>
               <SorteoModal showSorteoModal={showSorteoModal} setShowSorteoModal={setShowSorteoModal} handleConfirmar={handleConfirmar} />
                <SubscriptionModal showSubscribeModal={showSubscribeModal} setShowSubscribeModal={setShowSubscribeModal} />
-            </>
+            </div>
             : type == 'producto' && product.stock > 0 ? 
               <button disabled={cantidad < 1} className="bg-primary py-1 uppercase font-light text-lg text-black grow disabled:opacity-65" onClick={() => addToCart(product, cantidad)}>Comprar</button>
              : <button className="bg-primary/40 py-1 uppercase font-light text-lg text-black grow" disabled>AGOTADO</button> }
