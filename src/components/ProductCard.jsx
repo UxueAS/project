@@ -10,8 +10,13 @@ import { useSorteosContext } from '../providers/SorteosProvider';
 import SorteoModal from './SorteoModal';  
 import SubscriptionModal from './SubscriptionModal';
 
-const ProductCard = ({ product, color, btnText, element }) => {
+const ProductCard = ({ product, color}) => {
   const token = localStorage.getItem('token');
+  let element;
+  let btnText;
+  if(product.type === 'sorteo') { element = 'sorteos'; btnText = 'Participar'; }
+  if(product.type === 'promocion') { element = 'promociones'; btnText = 'Participar'; }
+  if(product.type === 'producto') { element = 'productos'; btnText = 'Comprar'; }
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavoritesContext();
   const { addToCart, message } = useCartContext();
   const [showSorteoModal, setShowSorteoModal] = useState(false);
@@ -84,6 +89,7 @@ ProductCard.propTypes = {
     img: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
     stock: PropTypes.number,
     tag: PropTypes.string,
     price: PropTypes.number,
@@ -91,9 +97,7 @@ ProductCard.propTypes = {
     access: PropTypes.string.isRequired,
     due_date: PropTypes.string
   }).isRequired,
-  color: PropTypes.string.isRequired,
-  btnText: PropTypes.string.isRequired,
-  element: PropTypes.string.isRequired
+  color: PropTypes.string.isRequired
 };
 
 export default ProductCard;

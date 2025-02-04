@@ -86,7 +86,7 @@ const Category = () => {
             <div className="flex flex-nowrap lg:grid lg:grid-cols-4 gap-4 overflow-auto">
               {featuredProducts.map(product => (
                 <div key={product.id} className="min-w-56 lg:w-auto">
-                  <ProductCard key={product.id} product={product} btnText="Comprar" element="productos" color="bg-primary" />
+                  <ProductCard key={product.id} product={product} color="bg-primary" />
                 </div>
               ))}
             </div>
@@ -142,7 +142,7 @@ const Category = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-x-4 gap-y-8">
           {filteredProducts.map(product => (
-            <ProductCard key={product.id} product={product} element="productos" btnText="Comprar" color="bg-dark-grey" />
+            <ProductCard key={product.id} product={product} color="bg-dark-grey" />
           ))}
         </div>
       </div>

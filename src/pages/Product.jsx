@@ -124,7 +124,7 @@ const Product = ({ type }) => {
           <div className="flex lg:grid grid-cols-2 md:grid-cols-4 gap-4 overflow-auto">
             {products.length > 4 && products.sort(() => 0.5 - Math.random()).slice(0, 4).map(product => (
               <div key={product.id} className="min-w-56 lg:w-auto">
-                <ProductCard product={product} element="productos" btnText="Comprar" color="bg-primary" />
+                <ProductCard product={product} color="bg-primary" />
               </div>
             ))}
           </div>

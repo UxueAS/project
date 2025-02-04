@@ -22,7 +22,7 @@ const MisSorteos = () => {
           </div>
         : <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {sorteos.map((product) => (
-            <ProductCard key={product.id} product={product} btnText="Ver" element="productos" color="bg-primary" />
+            <ProductCard key={product.id} product={product} color="bg-primary" />
           ))}
         </div>
         }

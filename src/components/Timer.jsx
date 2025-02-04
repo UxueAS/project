@@ -32,7 +32,7 @@ const Timer = ({date}) => {
   );
 };
 Timer.propTypes = {
-  date: PropTypes.string.isRequired,
+  date: PropTypes.string,
 };
 
 export default Timer;

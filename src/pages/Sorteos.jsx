@@ -17,7 +17,7 @@ const Sorteos = () => {
           <div className="flex flex-nowrap lg:grid lg:grid-cols-4 gap-4 overflow-auto">
             {sorteos.length > 4 && sorteos.sort(() => 0.5 - Math.random()).slice(0, 4).map(product => (
               <div key={product.id} className="min-w-56 lg:w-auto">
-                <ProductCard product={product} btnText="Participar" element="sorteos" color="bg-primary" />
+                <ProductCard product={product} color="bg-primary" />
               </div>
             ))}
           </div>
@@ -27,7 +27,7 @@ const Sorteos = () => {
         <h2 className="font-bold text-center text-3xl mb-6">Sorteos</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-x-4 gap-y-8">
           {sorteos.map(product => (
-            <ProductCard key={product.id} product={product}btnText="Participar" element="sorteos" color="bg-dark-grey" />
+            <ProductCard key={product.id} product={product} color="bg-dark-grey" />
           ))}
         </div>
       </div>
