@@ -13,6 +13,7 @@ import { getProduct, getSorteo, getPromocion } from "../services/api";
 import { useProductsContext } from '../providers/ProductsProvider';
 import { useSorteosContext } from "../providers/SorteosProvider";
 import SorteoModal from "../components/SorteoModal";
+import PromocionModal from "../components/PromocionModal";
 import SubscriptionModal from "../components/SubscriptionModal";
 import Timer from "../components/Timer";
 
@@ -24,6 +25,7 @@ const Product = ({ type }) => {
   const [cantidad, setCantidad] = useState(1);
   const [toggleReviews, setToggleReviews] = useState(false);
   const [showSorteoModal, setShowSorteoModal] = useState(false);
+  const [showPromocionModal, setShowPromocionModal] = useState(false);
   const [showSubscribeModal, setShowSubscribeModal] = useState(false);
   const [sorteoMessage, setSorteoMessage] = useState(null);
   const {products} = useProductsContext();
@@ -110,9 +112,18 @@ const Product = ({ type }) => {
               <SorteoModal showSorteoModal={showSorteoModal} setShowSorteoModal={setShowSorteoModal} handleConfirmar={handleConfirmar} />
                <SubscriptionModal showSubscribeModal={showSubscribeModal} setShowSubscribeModal={setShowSubscribeModal} />
             </div>
-            : type == 'producto' && product.stock > 0 ? 
+            : type == 'producto' ? product.stock > 0 ? 
               <button disabled={cantidad < 1} className="bg-primary py-1 uppercase font-light text-lg text-black grow disabled:opacity-65" onClick={() => addToCart(product, cantidad)}>Comprar</button>
-             : <button className="bg-primary/40 py-1 uppercase font-light text-lg text-black grow" disabled>AGOTADO</button> }
+             : <button className="bg-primary/40 py-1 uppercase font-light text-lg text-black grow" disabled>AGOTADO</button> 
+            : <div className="w-full flex flex-col gap-2">
+                <button className="bg-primary py-1 uppercase font-light text-lg text-black grow" 
+              onClick={ token ? ( product.access == 'logged' ?
+              () => {setShowPromocionModal(true); } : () => {setShowSubscribeModal(true)})
+              : () => navigate('/login')
+            }>Obtener promocion</button>
+              <PromocionModal showPromocionModal={showPromocionModal} setShowPromocionModal={setShowPromocionModal} />
+               <SubscriptionModal showSubscribeModal={showSubscribeModal} setShowSubscribeModal={setShowSubscribeModal} />
+            </div>}
             
           </div>
           <p>{ product.text }</p>
