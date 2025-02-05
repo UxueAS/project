@@ -6,21 +6,49 @@ const AuthService = {
   getError: () => {
     return error;
   },
-  login: async (email, password) => {
-    const response = await fetch('https://dummyjson.com/auth/login', {
+  register: async (name, email, password) => {
+    
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/user/register`, {
       method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:5173',
-        'Access-Control-Allow-Credentials': 'true'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        username: email,
-        password: password,
-        expiresInMins: 60
+        name: name,
+        email: email,
+        password: password
       })
     });
     const data = await response.json();
+    console.log(data);
+    if (data.accessToken) {
+      localStorage.setItem('token', data.accessToken);
+      localStorage.setItem('user', JSON.stringify(data));
+      return data;
+    } 
+    error = data;
+    return null;    
+  },
+  login: async (email, password) => {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/sanctum/csrf-cookie`, {
+      method: 'GET',
+      headers: { 
+        'Content-Type': 'application/json'
+      }
+    });
+    const token = await res.json();
+    console.log(token)
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/user/login`, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        csrf: token,
+        email: email,
+        password: password
+      })
+    });
+    const data = await response.json();
+    console.log(data);
     if (data.accessToken) {
       localStorage.setItem('token', data.accessToken);
       localStorage.setItem('user', JSON.stringify(data));

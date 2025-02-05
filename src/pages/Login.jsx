@@ -25,29 +25,23 @@ const Login = () => {
     const form = e.target;
     const username = form.username.value;
     const email = form.email.value;
-    const phone = form.phone.value;
     const password = form.password.value;
     const confirmPassword = form['confirm-password'].value;
-    const language = form.language.value;
 
     if (password !== confirmPassword) {
       setRegisterError({ message: 'Las contraseñas no coinciden' });
       return;
     }
-    fetch(`${import.meta.env.VITE_API_URL}/users`, {
-      method: 'POST',
-      headers: {
-      'Content-Type': 'application/json',
-      },
-      body: JSON.stringify([{ username, email, phone, password, language }]),
-    })
-    .then(response => response.json())
-    .then(data => {
-      localStorage.setItem('token', data.id);
-      localStorage.setItem('user', JSON.stringify(data));
-      navigate('/');
-    })
-    .catch(error => setRegisterError({ message: error.message || 'Error en el registro'}));
+    
+    e.preventDefault();
+    const register = await AuthService.register(username, email, password);
+    if(register){
+      navigate('/')
+    } else {
+      setRegisterError(AuthService.getError());
+      console.log(AuthService.getError());
+    }
+        
   };
   return (
     <div className='mx-auto max-w-7xl w-full py-8 px-2 lg:px-0'>
@@ -80,18 +74,6 @@ const Login = () => {
                 required
                 className='appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm'
                 placeholder='Correo electrónico'
-              />
-            </div>
-            <div>
-              <label htmlFor='phone' className='sr-only'>Teléfono</label>
-              <input
-                id='phone'
-                name='phone'
-                type='tel'
-                autoComplete='tel'
-                required
-                className='appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm'
-                placeholder='Teléfono'
               />
             </div>
             <div>
