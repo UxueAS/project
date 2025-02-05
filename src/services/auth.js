@@ -28,23 +28,17 @@ const AuthService = {
     return null;    
   },
   login: async (email, password) => {
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/sanctum/csrf-cookie`, {
-      method: 'GET',
-      headers: { 
-        'Content-Type': 'application/json'
-      }
-    });
-    const token = await res.json();
-    console.log(token)
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/user/login`, {
+    const response = await fetch('https://dummyjson.com/auth/login', {
       method: 'POST',
       headers: { 
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://naiz-project.vercel.app/',
+        'Access-Control-Allow-Credentials': 'true'
       },
       body: JSON.stringify({
-        csrf: token,
-        email: email,
-        password: password
+        username: email,
+        password: password,
+        expiresInMins: 60
       })
     });
     const data = await response.json();
