@@ -44,20 +44,25 @@ const BurgerMenu = () => {
             <li><Link to="/productos/todos" onClick={resetMenu} className='hover:underline'>Todos los productos</Link></li>
             {category.categories.map((subcategory, index) => (
               <li key={index}>
-                <button onClick={() => openSubcategory(subcategory.id)} className="w-full flex justify-between items-center">
-                  <span>{subcategory.name}</span>
-                  {subcategory.subcategories && openedSubcategory === subcategory.id ? <MdOutlineRemove /> : <MdOutlineAdd />}
-                  
-                </button>
-                {subcategory.subcategories && openedSubcategory === subcategory.id &&
-                  <ul className='font-normal flex flex-col gap-2 mt-4 ml-6'>
-                    {subcategory.subcategories.map((item, index) => (
-                      <li key={index}>
-                        <Link to={`/productos/categoria/${item.id}`} onClick={resetMenu} className='hover:underline'>{item.name}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                }
+               {subcategory.subcategories ?
+                <>
+                  <button onClick={() => openSubcategory(subcategory.id)} className="w-full flex justify-between items-center">
+                    <span>{subcategory.name}</span>
+                    {subcategory.subcategories && openedSubcategory === subcategory.id ? <MdOutlineRemove /> : <MdOutlineAdd />}
+                    
+                  </button>
+                  {openedSubcategory === subcategory.id &&
+                    <ul className='font-normal flex flex-col gap-2 mt-4 ml-6'>
+                      {subcategory.subcategories.map((item, index) => (
+                        <li key={index}>
+                          <Link to={`/productos/categoria/${item.id}`} onClick={resetMenu} className='hover:underline'>{item.name}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  }
+                </>
+                : <Link to={`/productos/categoria/${subcategory.id}`} onClick={resetMenu} className='hover:underline'>{subcategory.name}</Link>
+              }
               </li>)
             )}
           </ul>) :

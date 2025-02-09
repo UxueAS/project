@@ -20,8 +20,8 @@ const Category = () => {
   useEffect(() => {
     if(id) {
       getCategoryProducts(id).then(data => {
-          setCategoryProducts(data.products); setFilteredProducts(data.products); 
-          setFeaturedProducts([...data.products].sort(() => 0.5 - Math.random()).slice(0, 4));})
+          setCategoryProducts(data); setFilteredProducts(data); 
+          setFeaturedProducts([...data].sort(() => 0.5 - Math.random()).slice(0, 4));})
         .catch(error => console.error("Error fetching products:", error));
     } else {
       setCategoryProducts(products);
