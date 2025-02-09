@@ -117,6 +117,10 @@ import Slide2 from './concierto.png';
 import Slide3 from './hotel.png';
 import Producto117 from './producto_117.jpeg';
 import Producto118 from './producto_118.jpeg';
+import Producto119 from './producto_119.jpeg';
+import Producto120 from './producto_120.jpeg';
+import Producto121 from './producto_121.jpeg';
+import Producto122 from './producto_122.jpeg';
 
 const images = {
   "novedades4.png": Novedad1,
@@ -237,7 +241,11 @@ const images = {
   "slide2.png": Slide2,
   "slide3.png": Slide3,
   "producto_117.jpeg": Producto117,
-  "producto_118.jpeg": Producto118
+  "producto_118.jpeg": Producto118,
+  "producto_119.jpeg": Producto119,
+  "producto_120.jpeg": Producto120,
+  "producto_121.jpeg": Producto121,
+  "producto_122.jpeg": Producto122
 };
 
 export default images;
