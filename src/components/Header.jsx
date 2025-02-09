@@ -82,7 +82,7 @@ const Header = () => {
       {isSearchOpen && searchTerm && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-start mt-24 z-20">
           <div className="bg-white w-screen shadow-lg p-4 relative">
-            <div className='mx-auto max-w-7xl w-full flex flex-col'>
+            <div className='mx-auto max-w-6xl w-full flex flex-col'>
               <button
                 onClick={clearSearch}
                 className="ml-auto text-gray-500 hover:text-gray-700"

@@ -79,7 +79,7 @@ const Category = () => {
     <div className="flex flex-col">
       {categoryProducts.length > 4 &&
         <div className="bg-dark-grey text-white py-6">
-          <div className='mx-auto max-w-7xl w-full px-2 lg:px-0'>
+          <div className='mx-auto max-w-6xl w-full px-2 lg:px-0'>
             <h3 className="text-2xl font-bold mb-6">
               Pensamos que te podrían interesar...
             </h3>
@@ -93,7 +93,7 @@ const Category = () => {
           </div>
         </div> 
       }
-      <div className='mx-auto max-w-7xl w-full pb-6 px-2 lg:px-0'>
+      <div className='mx-auto max-w-6xl w-full pb-6 px-2 lg:px-0'>
         <div className="h-12 py-2 flex mb-4 justify-end">
             <button className="text-dark-grey hover:text-primary transition text-xl flex" title="Filtros" onClick={() => setShowFilters(!showFilters)}><span className="text-sm mr-2">Filtrar</span> <MdFilterList /><span className="sr-only">Filtros</span></button>
             <div className={`bg-white shadow p-4 w-3/4 lg:w-1/4 flex flex-col gap-4 fixed top-0 bottom-0 right-0 ${showFilters ? 'translate-x-0' : 'translate-x-full'} transition z-10`}>

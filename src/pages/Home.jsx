@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div className='flex flex-col'>
       <Slider />
-      <div className='mx-auto max-w-7xl w-full px-4 lg:px-0'>
+      <div className='mx-auto max-w-6xl w-full px-4 lg:px-0'>
         {AuthService.getToken() && <Favoritos />}
         <Novedades />
         <Tabs />

@@ -64,7 +64,7 @@ const Product = ({ type }) => {
     <div className="flex flex-col">
       <MessageAlert message={message} />
       <MessageAlert message={sorteoMessage} />
-      <div className='mx-auto max-w-7xl w-full flex flex-wrap mb-6 lg:my-12'>
+      <div className='mx-auto max-w-6xl w-full flex flex-wrap mb-6 lg:my-12'>
         <div className="w-full lg:w-1/2 lg:pr-8">
           <img src={images[product.img]} alt={product.title} className="w-full h-full object-cover" />
         </div>
@@ -130,7 +130,7 @@ const Product = ({ type }) => {
         </div>
       </div>
       <div className="bg-dark-grey text-white py-6">
-        <div className='mx-auto max-w-7xl w-full px-2 lg:px-0'>
+        <div className='mx-auto max-w-6xl w-full px-2 lg:px-0'>
           <h3 className="text-2xl font-bold mb-6">También te podrían interesar...</h3>
           <div className="flex lg:grid grid-cols-2 md:grid-cols-4 gap-4 overflow-auto">
             {products.length > 4 && products.sort(() => 0.5 - Math.random()).slice(0, 4).map(product => (
@@ -141,7 +141,7 @@ const Product = ({ type }) => {
           </div>
         </div>
       </div>
-      <div className='mx-auto max-w-7xl w-full my-12 flex flex-col px-2 lg:px-0'>
+      <div className='mx-auto max-w-6xl w-full my-12 flex flex-col px-2 lg:px-0'>
         <h3 className="text-2xl font-bold mb-6">Opiniones de otros usuarios</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           {reviews.map(review => (

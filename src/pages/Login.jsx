@@ -44,7 +44,7 @@ const Login = () => {
         
   };
   return (
-    <div className='mx-auto max-w-7xl w-full py-8 px-2 lg:px-0'>
+    <div className='mx-auto max-w-6xl w-full py-8 px-2 lg:px-0'>
       <h2 className='font-bold text-4xl w-3/4'>Crea tu cuenta y descubre todo lo que hemos preparado para ti.</h2>
       <div className='flex flex-wrap'>
         <div className='w-full lg:w-1/2 px-4 lg:px-12 py-4 border-r border-gray-300'>

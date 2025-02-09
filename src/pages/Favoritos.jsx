@@ -6,7 +6,7 @@ const Favoritos = () => {
 
   const { favorites } = useFavoritesContext();
   return (
-    <div className='mx-auto max-w-7xl w-full my-12 px-2 lg:px-0 flex flex-wrap'>
+    <div className='mx-auto max-w-6xl w-full my-12 px-2 lg:px-0 flex flex-wrap'>
       <div className="w-1/4 px-8 pt-14">
         <ul className="text-xl font-semibold flex flex-col">
           <li className="border-b border-dark-grey py-4 hover:text-primary transition"><Link to="/favoritos">Mis favoritos</Link></li>
