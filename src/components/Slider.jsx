@@ -30,7 +30,7 @@ const Slider = () => {
     getSlides().then(data =>{ setSlides(data)});
   }, []);
   return (
-    <div className="h-72 lg:h-96 w-full mb-4 lg:mb-0">
+    <div className="h-72 lg:h-96 w-full mb-4">
       <Carousel
         swipeable={false}
         draggable={false}
@@ -47,7 +47,7 @@ const Slider = () => {
         removeArrowOnDeviceType={["tablet", "mobile"]}
         dotListClass="custom-dot-list-style"
         sliderClass="h-full"
-        itemClass="carousel-item-padding-40-px h-72 lg:h-auto">
+        itemClass="carousel-item-padding-40-px h-72 lg:h-96">
           {slides.map((slide, index) => (
             <div key={index} className="relative bg-black h-full w-full">
               <img src={images[slide.img]} alt={slide.title} className="opacity-80 object-cover h-full w-full" />
