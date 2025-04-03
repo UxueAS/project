@@ -112,7 +112,7 @@ const Product = ({ type }) => {
               <SorteoModal showSorteoModal={showSorteoModal} setShowSorteoModal={setShowSorteoModal} handleConfirmar={handleConfirmar} />
                <SubscriptionModal showSubscribeModal={showSubscribeModal} setShowSubscribeModal={setShowSubscribeModal} />
             </div>
-            : type == 'producto' ? product.stock > 0 ? 
+            : type == 'product' ? product.stock > 0 ? 
               <button disabled={cantidad < 1} className="bg-primary py-1 uppercase font-light text-lg text-black grow disabled:opacity-65" onClick={() => addToCart(product, cantidad)}>Comprar</button>
              : <button className="bg-primary/40 py-1 uppercase font-light text-lg text-black grow" disabled>AGOTADO</button> 
             : <div className="w-full flex flex-col gap-2">
